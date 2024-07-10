@@ -4,6 +4,7 @@ const path = require("path");
 const cookieParser = require("cookie-parser");
 const logger = require("morgan");
 const dotenv = require("dotenv").config();
+const cors = require("cors");
 
 const indexRouter = require("./routes/index");
 const usersRouter = require("./routes/users");
@@ -33,6 +34,13 @@ db.on("error", (err) => {
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
+app.use(
+  cors({
+    origin: "http://localhost:3000", // accessible domain
+    credentials: true, // add Access-Control-Allow-Credentials at header
+    optionsSuccessStatus: 200,
+  }),
+);
 app.use(logger("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
