@@ -18,8 +18,16 @@ const mongoDB = process.env.MONGODB_URI;
 
 main().catch((err) => console.log(err));
 async function main() {
-  await mongoose.connect(mongoDB);
+  await mongoose.connect(mongoDB, { dbName: "Conan" });
 }
+
+const db = mongoose.connection;
+db.once("open", () => {
+  console.log("Connected to mongodb");
+});
+db.on("error", (err) => {
+  console.log(err);
+});
 
 // view engine setup
 app.set("views", path.join(__dirname, "views"));
