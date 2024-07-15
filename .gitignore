@@ -1,3 +1,6 @@
+# data
+conanDB.csv
+
 # Logs
 logs
 *.log
