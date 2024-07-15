@@ -158,6 +158,10 @@ nav {
   font-weight: 500;
 }
 nav li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   min-width: 5.313rem;
   list-style-type: none;
 }
@@ -167,17 +171,14 @@ nav li a {
 }
 nav > li::before {
   content: "";
-  display: block;
-  position: relative;
+  display: flex;
   height: 0.625rem;
 }
-nav > li:nth-child(1).on::before {
-  left: 1px;
+nav > li:nth-child(1)::before {
   width: 2.5rem;
   background: url("../public/images/red_line1.svg") center / contain no-repeat;
 }
-nav > li:nth-child(2).on::before {
-  left: 0px;
+nav > li:nth-child(2)::before {
   width: 5.125rem;
   height: 0.625rem;
   background: url("../public/images/red_line2.svg") center / contain no-repeat;
