@@ -1,3 +1,6 @@
+@use "sass:list";
+$colors: #e53a40, #efdc05, #5cab7d, #30a9de, #ffffff, #222222;
+
 // Reset CSS
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -144,6 +147,7 @@ body {
 
 .App {
   display: grid;
+  gap: 1.875rem;
   grid-template-rows: 5rem auto auto 17.5rem;
   padding: 1.25rem;
 }
@@ -179,11 +183,118 @@ nav > li:nth-child(1)::before {
   background: url("../public/images/red_line1.svg") center / contain no-repeat;
 }
 nav > li:nth-child(2)::before {
-  width: 5.125rem;
+  width: 5.5rem;
   height: 0.625rem;
   background: url("../public/images/red_line2.svg") center / contain no-repeat;
 }
 
+//CardSearch {
+#cardSearch {
+  display: flex;
+  gap: 1.875rem;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.table {
+  display: flex;
+  flex-direction: column;
+  gap: 3.125rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+}
+.table .row {
+  display: flex;
+  gap: 2.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+.table .row > div:nth-child(1) {
+  width: 5rem;
+}
+.table .row > div:nth-child(2) {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  justify-content: center;
+  width: 25rem;
+}
+#cardSearch .row input {
+  width: 12.5rem;
+  height: 1.875rem;
+  font-family: "SBAggroB";
+}
+#cardSearch select {
+  width: 20rem;
+  height: 1.875rem;
+  font-family: "SBAggroB";
+  font-size: 0.938rem;
+  text-overflow: ellipsis;
+}
+#cardSearch .badge {
+  padding: 0.313rem;
+  border: solid 2px #566270;
+  border-radius: 5px;
+  font-size: 1.25rem;
+  cursor: pointer;
+}
+#cardSearch .badge:active {
+  border: 2px dashed #090707;
+}
+#cardSearch .color .badge {
+  @for $i from 1 through length($colors) {
+    color: #ffffff;
+    &:nth-child(#{$i}) {
+      background-color: nth($colors, $i);
+      @if $i == 2 {
+        color: #222222;
+      } @else if $i == 5 {
+        color: #222222;
+      }
+    }
+  }
+}
+#cardSearch #searchBtn {
+  display: flex;
+  gap: 0.625rem;
+  align-items: center;
+  justify-content: center;
+  padding: 0.625rem 2.5rem 0.625rem 2.5rem;
+  border: none;
+  border-radius: 25px;
+  background-color: #e53a40;
+  font-family: "SBAggroB";
+  color: #ffffff;
+  font-size: 1.875rem;
+  letter-spacing: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+#cardSearch #searchBtn::after {
+  content: "";
+  display: flex;
+  width: 1.875rem;
+  height: 1.875rem;
+  background: url("../public/images/search.png") center / contain no-repeat;
+}
+#cardSearch .result {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+}
+#cardSearch .result .flip {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+}
+#cardSearch .result input {
+  width: 25px;
+  height: 25px;
+}
 // CardList
 #cardList {
   display: flex;
@@ -249,7 +360,7 @@ nav > li:nth-child(2)::before {
   left: 1.25rem;
 }
 .card .right .category {
-  font-size:0.75rem;
+  font-size: 0.75rem;
   font-weight: 300;
 }
 .card .right .level {
@@ -274,7 +385,7 @@ nav > li:nth-child(2)::before {
   padding-left: 0.625rem;
   padding-right: 0.625rem;
   background-color: #ffffff;
-  font-size:0.75rem;
+  font-size: 0.75rem;
 }
 .card .effect {
   padding-left: 0.625rem;
@@ -312,13 +423,13 @@ nav > li:nth-child(2)::before {
   content: "";
   display: flex;
   background: url("../public/images/AP.svg") center / contain no-repeat;
-  width:0.75rem;
+  width: 0.75rem;
   height: 1.438rem;
 }
 .LP::before {
   content: "";
   display: flex;
   background: url("../public/images/LP.svg") center / contain no-repeat;
-  width:0.75rem;
+  width: 0.75rem;
   height: 1.438rem;
 }
