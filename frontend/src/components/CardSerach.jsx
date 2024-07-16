@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Card from "./Card";
 import Badge from "./Badge";
 
@@ -11,7 +12,7 @@ function CardSearch(props) {
   const rarityList = rarity.map((badge) => <Badge value={badge} />);
 
   function onChange() {
-    props.flipCard();
+    props.flipAllCard();
   }
 
   return (

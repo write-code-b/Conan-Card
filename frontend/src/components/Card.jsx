@@ -1,22 +1,36 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Badge from "./Badge";
 
 function Card(props) {
+  const [flip, setFlip] = useState(true); //true -> front, flase -> back
+
   const featureBadge = { ...props.feature?.split(",") };
   const badges = Object.values(featureBadge).map((badge) => (
     <Badge value={badge} />
   ));
 
+  function flipCard() {
+    return flip ? setFlip(false) : setFlip(true);
+  }
+
+  useEffect(() => {
+    if (props.flipAll) {
+      setFlip(false);
+    } else {
+      setFlip(true);
+    }
+  },[props.flipAll]);
+  
   return (
-    <div className="card" onClick={props.flipCard}>
+    <div className="card" onClick={flipCard}>
       <div
-        className={`cardFront ${props.flip ? "on" : ""}`}
+        className={`cardFront ${flip ? "on" : ""}`}
         style={{
           backgroundImage: `url(${props.image_url || ""})`,
         }}
       ></div>
       <div
-        className={`cardBack ${props.flip ? "" : "on"}`}
+        className={`cardBack ${flip ? "" : "on"}`}
         style={{
           backgroundImage: `url(${props.image_url || ""})`,
         }}

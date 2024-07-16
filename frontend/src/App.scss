@@ -241,7 +241,7 @@ nav > li:nth-child(2)::before {
   font-size: 1.25rem;
   cursor: pointer;
 }
-#cardSearch .badge:active {
+#cardSearch .badge.clicked {
   border: 2px dashed #090707;
 }
 #cardSearch .color .badge {

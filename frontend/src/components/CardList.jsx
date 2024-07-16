@@ -4,7 +4,7 @@ import CardSearch from "./CardSerach";
 
 function CardList(props) {
   const [data, setData] = useState([]);
-  const [flip, setFlip] = useState(true); ////true -> front, flase -> back
+  const [flipAll, setFlipAll] = useState(false); //true -> front, flase -> back
 
   const cardData = async () => {
     const res = await fetch(`${process.env.REACT_APP_API}/cards`).then((res) =>
@@ -44,13 +44,12 @@ function CardList(props) {
       AP={card.AP}
       effect={card.effect}
       image_url={card.image_url}
-      flip={flip}
-      flipCard={flipCard}
+      flipAll={flipAll}
     />
   ));
 
-  function flipCard() {
-    return flip ? setFlip(false) : setFlip(true);
+  function flipAllCard() {
+    return flipAll ? setFlipAll(false) : setFlipAll(true);
   }
 
   useEffect(() => {
@@ -59,7 +58,10 @@ function CardList(props) {
 
   return (
     <>
-      <CardSearch count={data.length} flip={flip} flipCard={flipCard} />
+      <CardSearch
+        count={data.length}
+        flipAllCard={flipAllCard}
+      />
       <section id="cardList">{cards}</section>
     </>
   );
