@@ -257,6 +257,9 @@ nav > li:nth-child(2)::before {
     }
   }
 }
+#cardSearch .color > div:nth-child(6).clicked {
+  border-color: #ffffff;
+}
 #cardSearch #searchBtn {
   display: flex;
   gap: 0.625rem;
@@ -282,8 +285,37 @@ nav > li:nth-child(2)::before {
 }
 #cardSearch .result {
   display: flex;
+  align-items: center;
   justify-content: space-between;
   width: 90%;
+}
+#cardSearch .result > div:nth-child(1) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+}
+#cardSearch .result .tags {
+  display: flex;
+  gap: 20px;
+}
+#cardSearch .result .badge {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  height: 19px;
+  border: solid 0.5px #090707;
+  background-color: #e0e3da;
+  font-size: 15px;
+  pointer-events: none;
+}
+#cardSearch .result .badge::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  background: url("../public/images/close_btn.svg") center / contain no-repeat;
+  pointer-events: auto;
 }
 #cardSearch .result .flip {
   display: flex;
