@@ -2,27 +2,21 @@ import { useState } from "react";
 import Badge from "./Badge";
 
 function Card(props) {
-  const [flip, setFlip] = useState(true); //true -> front, flase -> back
   const featureBadge = { ...props.feature?.split(",") };
-
-  function flipCard() {
-    return flip ? setFlip(false) : setFlip(true);
-  }
-
   const badges = Object.values(featureBadge).map((badge) => (
     <Badge value={badge} />
   ));
 
   return (
-    <div className="card" onClick={flipCard}>
+    <div className="card" onClick={props.flipCard}>
       <div
-        className={`cardFront ${flip ? "on" : ""}`}
+        className={`cardFront ${props.flip ? "on" : ""}`}
         style={{
           backgroundImage: `url(${props.image_url || ""})`,
         }}
       ></div>
       <div
-        className={`cardBack ${flip ? "" : "on"}`}
+        className={`cardBack ${props.flip ? "" : "on"}`}
         style={{
           backgroundImage: `url(${props.image_url || ""})`,
         }}
