@@ -1,10 +1,15 @@
-import { useState, useEffect } from "react";
-import Card from "./Card";
+import { useState, useEffect, useRef } from "react";
 import Badge from "./Badge";
 
 function CardSearch(props) {
-  const [tags, setTags] = useState([]);
+  const inputRef = useRef(null);
+  const [searchTags, setSearchTags] = useState([]);
+  const [keyword, setKeyword] = useState([]);
+  const [colorTags, setColorTags] = useState([]);
+  const [categoryTags, setCategoryTags] = useState([]);
+  const [rarityTags, setRarityTags] = useState([]);
   const [showResult, setShowResult] = useState(false); //true -> show, false -> hide
+
   const color = ["적", "황", "녹", "청", "백", "흑"];
   const category = ["사건", "이벤트", "캐릭터", "파트너"];
   const rarity = ["C", "CP", "R", "RP", "SRP", "D", "PR"];
@@ -12,8 +17,12 @@ function CardSearch(props) {
   const colorList = color.map((badge) => (
     <Badge
       value={badge}
-      tags={tags}
-      setTags={setTags}
+      colorTags={colorTags}
+      categoryTags={categoryTags}
+      rarityTags={rarityTags}
+      setColorTags={setColorTags}
+      setCategoryTags={setCategoryTags}
+      setRarityTags={setRarityTags}
       event={true}
       setShowResult={setShowResult}
     />
@@ -21,8 +30,12 @@ function CardSearch(props) {
   const categoryList = category.map((badge) => (
     <Badge
       value={badge}
-      tags={tags}
-      setTags={setTags}
+      colorTags={colorTags}
+      categoryTags={categoryTags}
+      rarityTags={rarityTags}
+      setColorTags={setColorTags}
+      setCategoryTags={setCategoryTags}
+      setRarityTags={setRarityTags}
       event={true}
       setShowResult={setShowResult}
     />
@@ -30,13 +43,18 @@ function CardSearch(props) {
   const rarityList = rarity.map((badge) => (
     <Badge
       value={badge}
-      tags={tags}
-      setTags={setTags}
+      colorTags={colorTags}
+      categoryTags={categoryTags}
+      rarityTags={rarityTags}
+      setColorTags={setColorTags}
+      setCategoryTags={setCategoryTags}
+      setRarityTags={setRarityTags}
       event={true}
       setShowResult={setShowResult}
     />
   ));
-  const tagSearchList = tags.map((badge) => (
+
+  const tagSearchList = searchTags.map((badge) => (
     <Badge value={badge} event={false} />
   ));
 
@@ -45,6 +63,11 @@ function CardSearch(props) {
   }
 
   function clickSearchBtn() {
+    const value = inputRef.current.value.trim();
+    if (value) {
+      setKeyword(value);
+    }
+    setSearchTags([...keyword, ...colorTags, ...rarityTags, ...categoryTags]);
     setShowResult(true);
   }
 
@@ -55,7 +78,7 @@ function CardSearch(props) {
           <div className="row">
             <div>이름</div>
             <div>
-              <input type="text" />
+              <input type="text" ref={inputRef} />
             </div>
           </div>
           <div className="row">

@@ -6,10 +6,22 @@ function Badge(props) {
   function clickSearchTag(e) {
     if (props.event) {
       const value = e.target.innerHTML;
-      if (props.tags.includes(value)) {
-        props.tags.splice(props.tags.indexOf(value), 1);
+      const parent = e.target.parentNode.classList[0];
+      const propsList = [props.colorTags, props.categoryTags, props.rarityTags];
+      const propsSetList = [
+        props.setColorTags,
+        props.setCategoryTags,
+        props.setRarityTags,
+      ];
+      let i = -1;
+      if (parent === "color") i = 0;
+      else if (parent === "category") i = 1;
+      else if (parent === "rarity") i = 2;
+
+      if (propsList[i].includes(value)) {
+        propsList[i].splice(propsList[i].indexOf(value), 1);
       } else {
-        props.setTags([...props.tags, value]);
+        propsSetList[i]([...propsList[i], value]);
       }
       props.setShowResult(false);
       return click ? setClick(false) : setClick(true);
