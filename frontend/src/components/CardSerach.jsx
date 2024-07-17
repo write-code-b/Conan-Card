@@ -40,7 +40,7 @@ function CardSearch(props) {
     <Badge value={badge} event={false} />
   ));
 
-  function onChange() {
+  function onChangeCheckbox() {
     props.flipAllCard();
   }
 
@@ -95,7 +95,7 @@ function CardSearch(props) {
           <div className="flip">
             <input
               type="checkbox"
-              onChange={({ target: { checked } }) => onChange(checked)}
+              onChange={({ target: { checked } }) => onChangeCheckbox(checked)}
             />
             카드 뒤집기
           </div>
