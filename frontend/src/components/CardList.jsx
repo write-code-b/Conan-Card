@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import Card from "./Card";
-import CardSearch from "./CardSerach";
+import CardSearch from "./CardSearch";
 
 function CardList(props) {
   const [data, setData] = useState([]);
