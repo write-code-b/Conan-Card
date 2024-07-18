@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import axios from "axios";
 import Card from "./Card";
 import CardSearch from "./CardSearch";
 
@@ -6,28 +7,15 @@ function CardList(props) {
   const [data, setData] = useState([]);
   const [flipAll, setFlipAll] = useState(false); //true -> front, flase -> back
 
-  const cardData = async () => {
-    const res = await fetch(`${process.env.REACT_APP_API}/cards`).then((res) =>
-      res.json(),
-    );
-
-    const initData = res.slice(0, 20).map((it) => {
-      return {
-        code: it.code,
-        product: it.product,
-        category: it.category,
-        name: it.name,
-        level: it.level,
-        rarity: it.rarity,
-        LP: it.LP,
-        AP: it.AP,
-        feature: it.feature,
-        effect: it.effect,
-        color: it.color,
-        image_url: it.image_url,
-      };
-    });
-    setData(initData);
+  const cardData = () => {
+    axios({ method: "get", url: `${process.env.REACT_APP_API}/cards` })
+      .then(function (res) {
+        console.log("res", res);
+        setData(res.data);
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
   };
 
   const cards = data.map((card) => (
@@ -58,10 +46,7 @@ function CardList(props) {
 
   return (
     <>
-      <CardSearch
-        count={data.length}
-        flipAllCard={flipAllCard}
-      />
+      <CardSearch count={data.length} flipAllCard={flipAllCard} />
       <section id="cardList">{cards}</section>
     </>
   );
