@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import Badge from "./Badge";
 
 function CardSearch(props) {
@@ -18,39 +18,30 @@ function CardSearch(props) {
     <Badge
       value={badge}
       colorTags={colorTags}
-      categoryTags={categoryTags}
-      rarityTags={rarityTags}
       setColorTags={setColorTags}
-      setCategoryTags={setCategoryTags}
-      setRarityTags={setRarityTags}
-      event={true}
       setShowResult={setShowResult}
+      tagName={"color"}
+      event={true}
     />
   ));
   const categoryList = category.map((badge) => (
     <Badge
       value={badge}
-      colorTags={colorTags}
       categoryTags={categoryTags}
-      rarityTags={rarityTags}
-      setColorTags={setColorTags}
       setCategoryTags={setCategoryTags}
-      setRarityTags={setRarityTags}
-      event={true}
       setShowResult={setShowResult}
+      tagName={"category"}
+      event={true}
     />
   ));
   const rarityList = rarity.map((badge) => (
     <Badge
       value={badge}
-      colorTags={colorTags}
-      categoryTags={categoryTags}
       rarityTags={rarityTags}
-      setColorTags={setColorTags}
-      setCategoryTags={setCategoryTags}
       setRarityTags={setRarityTags}
-      event={true}
       setShowResult={setShowResult}
+      tagName={"rarity"}
+      event={true}
     />
   ));
 

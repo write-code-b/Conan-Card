@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import {useState } from "react";
 
 function Badge(props) {
   const [click, setClick] = useState(false);
@@ -6,22 +6,19 @@ function Badge(props) {
   function clickSearchTag(e) {
     if (props.event) {
       const value = e.target.innerHTML;
-      const parent = e.target.parentNode.classList[0];
-      const propsList = [props.colorTags, props.categoryTags, props.rarityTags];
-      const propsSetList = [
-        props.setColorTags,
-        props.setCategoryTags,
-        props.setRarityTags,
-      ];
-      let i = -1;
-      if (parent === "color") i = 0;
-      else if (parent === "category") i = 1;
-      else if (parent === "rarity") i = 2;
+      const name = e.target.dataset.name;
+      const propsList = {
+        color: [props.colorTags, props.setColorTags],
+        category: [props.categoryTags, props.setCategoryTags],
+        rarity: [props.rarityTags, props.setRarityTags],
+      };
+      const tags = propsList[name][0];
+      const setTags = propsList[name][1];
 
-      if (propsList[i].includes(value)) {
-        propsList[i].splice(propsList[i].indexOf(value), 1);
+      if (tags.includes(value)) {
+        tags.splice(tags.indexOf(value), 1);
       } else {
-        propsSetList[i]([...propsList[i], value]);
+        setTags([...tags, value]);
       }
       props.setShowResult(false);
       return click ? setClick(false) : setClick(true);
@@ -33,6 +30,7 @@ function Badge(props) {
       <div
         className={`badge ${click ? "clicked" : ""}`}
         onClick={(e) => clickSearchTag(e)}
+        data-name={props.tagName}
       >
         {props.value}
       </div>
