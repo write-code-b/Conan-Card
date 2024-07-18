@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Badge from "./Badge";
@@ -6,7 +6,7 @@ import Badge from "./Badge";
 function CardSearch(props) {
   const inputRef = useRef(null);
   const [searchTags, setSearchTags] = useState([]);
-  const [keyword, setKeyword] = useState([]);
+  const [keyword, setKeyword] = useState("");
   const [colorTags, setColorTags] = useState([]);
   const [categoryTags, setCategoryTags] = useState([]);
   const [rarityTags, setRarityTags] = useState([]);
@@ -20,6 +20,7 @@ function CardSearch(props) {
 
   const cardFilteredData = () => {
     const params = {
+      name: keyword,
       color: colorTags,
       category: categoryTags,
       rarity: rarityTags,
@@ -34,7 +35,10 @@ function CardSearch(props) {
     })
       .then(function (res) {
         props.setData(res.data);
-        navigate({pathname: "/cards", search: createSearchParams(params).toString()})
+        navigate({
+          pathname: "/cards",
+          search: createSearchParams(params).toString(),
+        });
       })
       .catch(function (err) {
         console.error(err);
@@ -81,17 +85,17 @@ function CardSearch(props) {
   }
 
   function showTags() {
-    const value = inputRef?.current.value.trim();
-    if (value) {
-      setKeyword(value);
-    }
-    setSearchTags([...keyword, ...colorTags, ...rarityTags, ...categoryTags]);
+    setSearchTags([keyword, ...colorTags, ...rarityTags, ...categoryTags]);
     setShowResult(true);
   }
 
   const clickSearchBtn = () => {
     showTags();
     cardFilteredData();
+  };
+
+  const onChange = (event) => {
+    setKeyword(event.target.value);
   };
 
   return (
@@ -101,7 +105,12 @@ function CardSearch(props) {
           <div className="row">
             <div>이름</div>
             <div>
-              <input type="text" ref={inputRef} />
+              <input
+                type="text"
+                ref={inputRef}
+                onChange={onChange}
+                value={keyword}
+              />
             </div>
           </div>
           <div className="row">
