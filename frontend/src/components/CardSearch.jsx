@@ -1,4 +1,6 @@
 import { useState, useRef } from "react";
+import { createSearchParams, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Badge from "./Badge";
 
 function CardSearch(props) {
@@ -13,6 +15,31 @@ function CardSearch(props) {
   const color = ["적", "황", "녹", "청", "백", "흑"];
   const category = ["사건", "이벤트", "캐릭터", "파트너"];
   const rarity = ["C", "CP", "R", "RP", "SRP", "D", "PR"];
+
+  const navigate = useNavigate();
+
+  const cardFilteredData = () => {
+    const params = {
+      color: colorTags,
+      category: categoryTags,
+      rarity: rarityTags,
+    };
+    axios({
+      method: "get",
+      url: `${process.env.REACT_APP_API}/cards`,
+      params: params,
+      paramsSerializer: {
+        indexes: true,
+      },
+    })
+      .then(function (res) {
+        props.setData(res.data);
+        navigate({pathname: "/cards", search: createSearchParams(params).toString()})
+      })
+      .catch(function (err) {
+        console.error(err);
+      });
+  };
 
   const colorList = color.map((badge) => (
     <Badge
@@ -53,14 +80,19 @@ function CardSearch(props) {
     props.flipAllCard();
   }
 
-  function clickSearchBtn() {
-    const value = inputRef.current.value.trim();
+  function showTags() {
+    const value = inputRef?.current.value.trim();
     if (value) {
       setKeyword(value);
     }
     setSearchTags([...keyword, ...colorTags, ...rarityTags, ...categoryTags]);
     setShowResult(true);
   }
+
+  const clickSearchBtn = () => {
+    showTags();
+    cardFilteredData();
+  };
 
   return (
     <>

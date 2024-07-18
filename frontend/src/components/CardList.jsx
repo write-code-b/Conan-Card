@@ -46,7 +46,11 @@ function CardList(props) {
 
   return (
     <>
-      <CardSearch count={data.length} flipAllCard={flipAllCard} />
+      <CardSearch
+        setData={setData}
+        count={data.length}
+        flipAllCard={flipAllCard}
+      />
       <section id="cardList">{cards}</section>
     </>
   );
