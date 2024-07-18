@@ -5,7 +5,19 @@ const asyncHandler = require("express-async-handler");
 
 // Display list of all cards.
 exports.card_list = asyncHandler(async (req, res, next) => {
-  const allCards = await Card.find({});
-
-  res.json(allCards);
+  const query = req.query;
+  if (Object.entries(query).length === 0) {
+    const allCards = await Card.find({});
+    res.json(allCards);
+  } else {
+    const filter = [query].map((k) => {
+      return {
+        ...(k.color && { color: { $in: k.color } }),
+        ...(k.category && { category: { $in: k.category } }),
+        ...(k.rarity && { rarity: { $in: k.rarity } }),
+      };
+    });
+    const filterCards = await Card.find(filter[0]);
+    res.json(filterCards);
+  }
 });
