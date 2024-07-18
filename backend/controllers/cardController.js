@@ -10,8 +10,10 @@ exports.card_list = asyncHandler(async (req, res, next) => {
     const allCards = await Card.find({});
     res.json(allCards);
   } else {
+    const regex = (pattern) => new RegExp(`.*${pattern}.*`);
     const filter = [query].map((k) => {
       return {
+        ...(k.name && { name: { $regex: regex(k.name) } }),
         ...(k.color && { color: { $in: k.color } }),
         ...(k.category && { category: { $in: k.category } }),
         ...(k.rarity && { rarity: { $in: k.rarity } }),
