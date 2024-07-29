@@ -340,6 +340,10 @@ nav > li:nth-child(2)::before {
   height: 21.813rem;
   cursor: pointer;
 }
+.card.horizontal {
+  width: 21.813rem;
+  height: 15.625rem;
+}
 .card .on {
   z-index: 1;
 }
@@ -353,16 +357,25 @@ nav > li:nth-child(2)::before {
   width: 15.625rem;
   height: 21.813rem;
 }
+.card.horizontal .cardFront {
+  width: 21.813rem;
+  height: 15.625rem;
+}
 .cardBack {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  top: -21.813rem;
+  top: -349px;
   width: 15.625rem;
   height: 21.813rem;
   z-index: -1;
   isolation: isolate;
+}
+.card.horizontal .cardBack {
+  width: 21.813rem;
+  height: 15.625rem;
+  top: -250px;
 }
 .cardBack::after {
   content: "";
@@ -375,22 +388,22 @@ nav > li:nth-child(2)::before {
   opacity: 0.8;
 }
 .cardBack.red::after {
-  border-color: #E53A40;
+  border-color: #e53a40;
 }
 .cardBack.yellow::after {
-  border-color: #EFDC05;
+  border-color: #efdc05;
 }
 .cardBack.green::after {
-  border-color: #5CAB7D;
+  border-color: #5cab7d;
 }
 .cardBack.blue::after {
-  border-color: #30A9DE;
+  border-color: #30a9de;
 }
 .cardBack.black ::after {
   border-color: #090707;
 }
 .cardBack.white::after {
-  border-color: #FFFFFF;
+  border-color: #ffffff;
 }
 .card .title {
   display: flex;
@@ -406,8 +419,15 @@ nav > li:nth-child(2)::before {
   flex-direction: column;
   align-items: center;
   position: absolute;
-  top: 1.25rem;
-  left: 1.25rem;
+  top: 20px;
+  left: 20px;
+}
+.card.horizontal .right {
+  top: 210px;
+  left: 230px;
+}
+.card.horizontal .right .category {
+  opacity: 0;
 }
 .card .right .category {
   font-size: 0.75rem;

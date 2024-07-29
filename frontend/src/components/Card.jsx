@@ -46,7 +46,10 @@ function Card(props) {
   }, [props.flipAll]);
 
   return (
-    <div className="card" onClick={flipCard}>
+    <div
+      className={`card ${(props.category == "사건" ? "horizontal" : "")}`}
+      onClick={flipCard}
+    >
       <div
         className={`cardFront ${flip ? "on" : ""}`}
         style={{
