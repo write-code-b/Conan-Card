@@ -512,3 +512,32 @@ nav > li:nth-child(2)::before {
   width: 0.75rem;
   height: 1.438rem;
 }
+
+// Footer
+#footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #dddfe6;
+}
+#footer p {
+  margin-bottom: 10px;
+  color: #252c41;
+  font-size: 13px;
+  text-align: center;
+}
+#footer > div {
+  display: flex;
+  gap: 30px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+#footer .github {
+  width: 50px;
+  height: 50px;
+  background: url("../public/images/github.svg") center / contain no-repeat;
+  cursor: pointer;
+}
