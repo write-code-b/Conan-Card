@@ -19,8 +19,8 @@ function Card(props) {
     } else {
       setFlip(true);
     }
-  },[props.flipAll]);
-  
+  }, [props.flipAll]);
+
   return (
     <div className="card" onClick={flipCard}>
       <div
@@ -47,7 +47,10 @@ function Card(props) {
         </div>
         <div className="effect">{props.effect}</div>
         <div className="bottom">
-          <div className="rarity">{props.rarity}</div>
+          <div>
+            <div className="rarity">{props.rarity}</div>
+            <div className="id">[ {props.code} ]</div>
+          </div>
           <div>
             {props.AP ? <div className="AP">{props.AP}</div> : ""}
             {props.LP ? <div className="LP">{props.LP}</div> : ""}

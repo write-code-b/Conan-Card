@@ -429,6 +429,14 @@ nav > li:nth-child(2)::before {
   justify-content: space-between;
   padding: 0 0.625rem 0.625rem 0.625rem;
 }
+.cardBack .bottom > div:nth-child(1) {
+  display: flex;
+  gap: 0.313rem;
+}
+.cardBack .bottom .id {
+  align-self: flex-end;
+  font-size: 0.625rem;
+}
 .cardBack .bottom > div:nth-child(2) {
   display: flex;
   gap: 0.625rem;
