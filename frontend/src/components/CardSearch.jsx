@@ -20,7 +20,7 @@ function CardSearch(props) {
 
   const cardFilteredData = () => {
     const params = {
-      name: keyword,
+      ...(keyword && { name: keyword }),
       color: colorTags,
       category: categoryTags,
       rarity: rarityTags,
@@ -76,9 +76,9 @@ function CardSearch(props) {
     />
   ));
 
-  const tagSearchList = searchTags.map((badge) => (
-    <Badge value={badge} event={false} />
-  ));
+  const tagSearchList = searchTags.map(function (badge) {
+    if (badge) return <Badge value={badge} event={false} />;
+  });
 
   function onChangeCheckbox() {
     props.flipAllCard();
