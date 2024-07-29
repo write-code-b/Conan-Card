@@ -149,7 +149,7 @@ body {
   display: grid;
   gap: 1.875rem;
   grid-template-rows: 5rem auto auto 17.5rem;
-  padding: 1.25rem;
+  //padding: 1.25rem;
 }
 
 // Navbar
@@ -217,10 +217,11 @@ nav > li:nth-child(2)::before {
 }
 .table .row > div:nth-child(2) {
   display: flex;
+  flex-wrap: wrap;
   gap: 1.25rem;
   align-items: center;
   justify-content: center;
-  width: 25rem;
+  width: 27rem;
 }
 #cardSearch .row input {
   width: 12.5rem;
