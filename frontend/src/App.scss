@@ -374,6 +374,24 @@ nav > li:nth-child(2)::before {
   inset: 0;
   opacity: 0.8;
 }
+.cardBack.red::after {
+  border-color: #E53A40;
+}
+.cardBack.yellow::after {
+  border-color: #EFDC05;
+}
+.cardBack.green::after {
+  border-color: #5CAB7D;
+}
+.cardBack.blue::after {
+  border-color: #30A9DE;
+}
+.cardBack.black ::after {
+  border-color: #090707;
+}
+.cardBack.white::after {
+  border-color: #FFFFFF;
+}
 .card .title {
   display: flex;
   flex-direction: row;

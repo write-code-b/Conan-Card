@@ -12,6 +12,30 @@ function Card(props) {
   function flipCard() {
     return flip ? setFlip(false) : setFlip(true);
   }
+  function translateColor(color) {
+    let en = "";
+    switch (color) {
+      case "적":
+        en = "red";
+        break;
+      case "황":
+        en = "yellow";
+        break;
+      case "녹":
+        en = "green";
+        break;
+      case "청":
+        en = "blue";
+        break;
+      case "흑":
+        en = "black";
+        break;
+      case "백":
+        en = "white";
+        break;
+    }
+    return en;
+  }
 
   useEffect(() => {
     if (props.flipAll) {
@@ -30,7 +54,9 @@ function Card(props) {
         }}
       ></div>
       <div
-        className={`cardBack ${flip ? "" : "on"}`}
+        className={`cardBack ${translateColor(props.color)} ${
+          flip ? "" : "on"
+        }`}
         style={{
           backgroundImage: `url(${props.image_url || ""})`,
         }}
