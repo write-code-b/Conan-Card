@@ -14,6 +14,7 @@ exports.card_list = asyncHandler(async (req, res, next) => {
     const filter = [query].map((k) => {
       return {
         ...(k.name && { name: { $regex: regex(k.name) } }),
+        ...(k.code && { code: { $in: k.code } }),
         ...(k.color && { color: { $in: k.color } }),
         ...(k.category && { category: { $in: k.category } }),
         ...(k.rarity && { rarity: { $in: k.rarity } }),

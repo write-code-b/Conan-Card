@@ -4,9 +4,9 @@ import axios from "axios";
 import Badge from "./Badge";
 
 function CardSearch(props) {
-  const inputRef = useRef(null);
   const [searchTags, setSearchTags] = useState([]);
   const [keyword, setKeyword] = useState("");
+  const [id, setId] = useState("");
   const [colorTags, setColorTags] = useState([]);
   const [categoryTags, setCategoryTags] = useState([]);
   const [rarityTags, setRarityTags] = useState([]);
@@ -21,6 +21,7 @@ function CardSearch(props) {
   const cardFilteredData = () => {
     const params = {
       ...(keyword && { name: keyword }),
+      ...(id && { code: id }),
       color: colorTags,
       category: categoryTags,
       rarity: rarityTags,
@@ -85,7 +86,7 @@ function CardSearch(props) {
   }
 
   function showTags() {
-    setSearchTags([keyword, ...colorTags, ...rarityTags, ...categoryTags]);
+    setSearchTags([id, keyword, ...colorTags, ...rarityTags, ...categoryTags]);
     setShowResult(true);
   }
 
@@ -94,8 +95,12 @@ function CardSearch(props) {
     cardFilteredData();
   };
 
-  const onChange = (event) => {
+  const onChangeName = (event) => {
     setKeyword(event.target.value);
+  };
+
+  const onChangeCode = (event) => {
+    setId(event.target.value.toUpperCase());
   };
 
   return (
@@ -105,12 +110,13 @@ function CardSearch(props) {
           <div className="row">
             <div>이름</div>
             <div>
-              <input
-                type="text"
-                ref={inputRef}
-                onChange={onChange}
-                value={keyword}
-              />
+              <input type="text" onChange={onChangeName} value={keyword} />
+            </div>
+          </div>
+          <div className="row">
+            <div>ID</div>
+            <div>
+              <input type="text" onChange={onChangeCode} value={id} />
             </div>
           </div>
           <div className="row">
