@@ -36,7 +36,7 @@ app.set("view engine", "pug");
 
 app.use(
   cors({
-    origin: "http://localhost:3000", // accessible domain
+    origin: "https://conan-card.netlify.app/", // accessible domain
     credentials: true, // add Access-Control-Allow-Credentials at header
     optionsSuccessStatus: 200,
   }),
