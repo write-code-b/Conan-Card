@@ -188,6 +188,20 @@ nav > li:nth-child(2)::before {
   background: url("../public/images/red_line2.svg") center / contain no-repeat;
 }
 
+//About {
+#about {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 12.5rem;
+}
+#about > div {
+  width: 31.25rem;
+  height: 15rem;
+  padding: 0.625rem;
+}
+
 //CardSearch {
 #cardSearch {
   display: flex;
