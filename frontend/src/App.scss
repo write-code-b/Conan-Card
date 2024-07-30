@@ -355,6 +355,9 @@ nav > li:nth-child(2)::before {
   height: 21.813rem;
   cursor: pointer;
 }
+.card:hover {
+  transform: scale(1.05);
+}
 .card.horizontal {
   width: 21.813rem;
   height: 15.625rem;
