@@ -28,7 +28,9 @@ function CardSearch(props) {
     };
     axios({
       method: "get",
-      url: `${process.env.REACT_APP_API}/cards`,
+      baseURL: process.env.REACT_APP_API,
+      url: "/cards",
+      withCredentials: true,
       params: params,
       paramsSerializer: {
         indexes: true,

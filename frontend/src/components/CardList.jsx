@@ -8,9 +8,13 @@ function CardList(props) {
   const [flipAll, setFlipAll] = useState(false); //true -> front, flase -> back
 
   const cardData = () => {
-    axios({ method: "get", url: `${process.env.REACT_APP_API}/cards` })
+    axios({
+      method: "get",
+      baseURL: process.env.REACT_APP_API,
+      url: "/cards",
+      withCredentials: true,
+    })
       .then(function (res) {
-        console.log("res", res);
         setData(res.data);
       })
       .catch(function (err) {
