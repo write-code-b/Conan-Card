@@ -1,13 +1,21 @@
+import { NavLink } from "react-router-dom";
+
 function Navbar(props) {
   return (
     <>
       <nav>
-        <li>
-          <a href="/about">소개</a>
-        </li>
-        <li>
-          <a href="/cards">카드 목록</a>
-        </li>
+        <NavLink
+          className={({ isActive }) => "nav" + (isActive ? "_active" : "")}
+          to="/about"
+        >
+          소개
+        </NavLink>
+        <NavLink
+          className={({ isActive }) => "nav" + (isActive ? "_active" : "")}
+          to="/cards"
+        >
+          카드 목록
+        </NavLink>
       </nav>
     </>
   );
