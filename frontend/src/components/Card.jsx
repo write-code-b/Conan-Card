@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Badge from "./Badge";
+import ProgressiveImg from "./ProgressiveImg";
+import placeholderSrc from "../assets/card.png";
 
 function Card(props) {
   const [flip, setFlip] = useState(true); //true -> front, flase -> back
@@ -47,15 +49,14 @@ function Card(props) {
 
   return (
     <div
-      className={`card ${props.category == "사건" ? "horizontal" : ""}`}
+      className={`card ${props.category === "사건" ? "horizontal" : ""}`}
       onClick={flipCard}
     >
-      <div
-        className={`cardFront ${flip ? "on" : ""}`}
-        style={{
-          backgroundImage: `url(${props.image_url || ""})`,
-        }}
-      ></div>
+      <ProgressiveImg
+        src={props.image_url}
+        placeholderSrc={placeholderSrc}
+        flip={flip}
+      />
       <div
         className={`cardBack ${translateColor(props.color)} ${
           flip ? "" : "on"

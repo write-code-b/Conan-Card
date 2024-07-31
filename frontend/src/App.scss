@@ -375,12 +375,20 @@ nav .nav_active {
   width: 21.813rem;
   height: 15.625rem;
 }
+.loading {
+  // filter: blur(1px);
+  clip-path: inset(0);
+}
+.loaded {
+  filter: blur(0px);
+  transition: filter 0.5s linear;
+}
 .cardBack {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  top: -349px;
+  top: -354px;
   width: 15.625rem;
   height: 21.813rem;
   z-index: -1;
@@ -389,7 +397,7 @@ nav .nav_active {
 .card.horizontal .cardBack {
   width: 21.813rem;
   height: 15.625rem;
-  top: -250px;
+  top: -255px;
 }
 .cardBack::after {
   content: "";
