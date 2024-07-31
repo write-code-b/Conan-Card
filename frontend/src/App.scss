@@ -169,23 +169,16 @@ nav li {
   min-width: 5.313rem;
   list-style-type: none;
 }
-nav li a {
+nav a {
   text-decoration-line: none;
   color: #222222;
+  padding-top: 5px;
 }
-nav > li::before {
-  content: "";
-  display: flex;
-  height: 0.625rem;
+nav a:hover {
+  transform: scale(1.1);
 }
-nav > li:nth-child(1)::before {
-  width: 2.5rem;
-  background: url("../public/images/red_line1.svg") center / contain no-repeat;
-}
-nav > li:nth-child(2)::before {
-  width: 5.5rem;
-  height: 0.625rem;
-  background: url("../public/images/red_line2.svg") center / contain no-repeat;
+nav .nav_active {
+  border-top: solid 4px #e53a40;
 }
 
 //About {
@@ -209,18 +202,20 @@ nav > li:nth-child(2)::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 1.875rem;
 }
 .table {
   display: flex;
   flex-direction: column;
-  gap: 3.125rem;
+  gap: 1.875rem;
   align-items: center;
   justify-content: center;
   font-size: 1.25rem;
 }
 .table .row {
   display: flex;
-  gap: 2.5rem;
+  column-gap: 2.5rem;
+  row-gap: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
@@ -330,7 +325,7 @@ nav > li:nth-child(2)::before {
   width: 8px;
   height: 8px;
   background: url("../public/images/close_btn.svg") center / contain no-repeat;
-  pointer-events: auto;
+  // pointer-events: auto;
 }
 #cardSearch .result .flip {
   display: flex;
@@ -348,7 +343,8 @@ nav > li:nth-child(2)::before {
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: 1.563rem;
+  padding-top: 1.875rem;
 }
 .card {
   width: 15.625rem;
@@ -439,6 +435,14 @@ nav > li:nth-child(2)::before {
   position: absolute;
   top: 20px;
   left: 20px;
+}
+.card .title .name.long {
+  margin-left: 3.75rem;
+  font-size: 0.938rem;
+}
+.card.horizontal .title .name.long {
+  margin-left: 0;
+  font-size: 1.25rem;
 }
 .card.horizontal .right {
   top: 210px;
@@ -536,13 +540,9 @@ nav > li:nth-child(2)::before {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #dddfe6;
-  font-size: 13px;
+  font-size: 0.813rem;
   text-align: center;
   color: #252c41;
-}
-#footer p {
-  margin-bottom: 10px;
 }
 #footer a {
   text-decoration: none;
@@ -550,14 +550,10 @@ nav > li:nth-child(2)::before {
 }
 #footer > div {
   display: flex;
+  gap: 2px;
+  flex-wrap: wrap;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: 30px;
-}
-#footer .github {
-  width: 50px;
-  height: 50px;
-  background: url("../public/images/github.svg") center / contain no-repeat;
-  cursor: pointer;
+  padding: 1.875rem;
 }
