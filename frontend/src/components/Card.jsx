@@ -47,7 +47,7 @@ function Card(props) {
 
   return (
     <div
-      className={`card ${(props.category == "사건" ? "horizontal" : "")}`}
+      className={`card ${props.category == "사건" ? "horizontal" : ""}`}
       onClick={flipCard}
     >
       <div
@@ -70,7 +70,9 @@ function Card(props) {
               <div className="category">{props.category}</div>
               <div className="level">{props.level}</div>
             </div>
-            <div>{props.name}</div>
+            <div className={`name ${props.name.length >= 9 ? "long" : ""}`}>
+              {props.name}
+            </div>
           </div>
           <div className="jobs">{badges}</div>
         </div>
