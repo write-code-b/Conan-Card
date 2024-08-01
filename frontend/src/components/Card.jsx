@@ -7,8 +7,8 @@ function Card(props) {
   const [flip, setFlip] = useState(true); //true -> front, flase -> back
 
   const featureBadge = { ...props.feature?.split(",") };
-  const badges = Object.values(featureBadge).map((badge) => (
-    <Badge value={badge} />
+  const badges = Object.values(featureBadge).map((badge, idx) => (
+    <Badge key={`card_ + ${idx}`} value={badge} />
   ));
 
   function flipCard() {

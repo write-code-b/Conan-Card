@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 
-const ProgressiveImg = ({ placeholderSrc, src, ...props }) => {
+const ProgressiveImg = ({ placeholderSrc, flip, src, ...props }) => {
   const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
 
-  const flipState = props.flip && props.flip ? "on" : "";
+  const flipState = flip && flip ? "on" : "";
   const loadState =
     placeholderSrc && imgSrc === placeholderSrc ? "loading" : "loaded";
 

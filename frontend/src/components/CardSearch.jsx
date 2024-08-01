@@ -12,9 +12,17 @@ function CardSearch(props) {
   const [rarityTags, setRarityTags] = useState([]);
   const [showResult, setShowResult] = useState(false); //true -> show, false -> hide
 
-  const color = ["적", "황", "녹", "청", "백", "흑"];
-  const category = ["사건", "이벤트", "캐릭터", "파트너"];
-  const rarity = ["C", "CP", "R", "RP", "SRP", "D", "PR"];
+  const color = { 0: "적", 1: "황", 2: "녹", 3: "청", 4: "백", 5: "흑" };
+  const category = { 6: "사건", 7: "이벤트", 8: "캐릭터", 9: "파트너" };
+  const rarity = {
+    10: "C",
+    11: "CP",
+    12: "R",
+    13: "RP",
+    14: "SRP",
+    15: "D",
+    16: "PR",
+  };
 
   const navigate = useNavigate();
 
@@ -48,9 +56,10 @@ function CardSearch(props) {
       });
   };
 
-  const colorList = color.map((badge) => (
+  const colorList = Object.entries(color).map(([key, value]) => (
     <Badge
-      value={badge}
+      key={key}
+      value={value}
       colorTags={colorTags}
       setColorTags={setColorTags}
       setShowResult={setShowResult}
@@ -58,9 +67,10 @@ function CardSearch(props) {
       event={true}
     />
   ));
-  const categoryList = category.map((badge) => (
+  const categoryList = Object.entries(category).map(([key, value]) => (
     <Badge
-      value={badge}
+      key={key}
+      value={value}
       categoryTags={categoryTags}
       setCategoryTags={setCategoryTags}
       setShowResult={setShowResult}
@@ -68,9 +78,10 @@ function CardSearch(props) {
       event={true}
     />
   ));
-  const rarityList = rarity.map((badge) => (
+  const rarityList = Object.entries(rarity).map(([key, value]) => (
     <Badge
-      value={badge}
+      key={key}
+      value={value}
       rarityTags={rarityTags}
       setRarityTags={setRarityTags}
       setShowResult={setShowResult}
@@ -79,8 +90,9 @@ function CardSearch(props) {
     />
   ));
 
-  const tagSearchList = searchTags.map(function (badge) {
-    if (badge) return <Badge value={badge} event={false} />;
+  const tagSearchList = searchTags.map(function (badge, idx) {
+    if (badge)
+      return <Badge key={`search_ + ${idx}`} value={badge} event={false} />;
   });
 
   function onChangeCheckbox() {
@@ -152,7 +164,7 @@ function CardSearch(props) {
         </button>
         <div className="result">
           <div>
-            {props.count}개
+            <div className="count">{props.count}개</div>
             <div className="tags">{showResult && tagSearchList}</div>
           </div>
           <div className="flip">

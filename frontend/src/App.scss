@@ -303,27 +303,32 @@ nav .nav_active {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 50px;
+  gap: 10px;
+}
+#cardSearch .result .count {
+  min-width: 3.125rem;
 }
 #cardSearch .result .tags {
   display: flex;
-  gap: 20px;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 20px;
 }
 #cardSearch .result .badge {
   display: flex;
   gap: 10px;
   align-items: center;
   justify-content: center;
-  height: 19px;
+  height: 1.188rem;
   border: solid 0.5px #090707;
   background-color: #e0e3da;
-  font-size: 15px;
+  font-size: 0.938rem;
   pointer-events: none;
 }
 #cardSearch .result .badge::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  width: 0.563rem;
+  height: 0.563rem;
   background: url("../public/images/close_btn.svg") center / contain no-repeat;
   // pointer-events: auto;
 }
@@ -332,10 +337,11 @@ nav .nav_active {
   gap: 10px;
   align-items: center;
   justify-content: center;
+  min-width: 9.375rem;
 }
 #cardSearch .result input {
-  width: 25px;
-  height: 25px;
+  width: 1.563rem;
+  height: 1.563rem;
 }
 // CardList
 #cardList {

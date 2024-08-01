@@ -21,9 +21,9 @@ function CardList(props) {
         console.error(err);
       });
   };
-
   const cards = data.map((card) => (
     <Card
+      key={card._id}
       code={card.code}
       name={card.name}
       level={card.level}
