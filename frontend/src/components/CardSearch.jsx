@@ -14,19 +14,19 @@ function CardSearch(props) {
   const [searchTags, setSearchTags] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [id, setId] = useState("");
-  const [productId, setProductId] = useState("");
+  const [productCode, setproductCode] = useState(0);
   const [colorTags, setColorTags] = useState([]);
   const [categoryTags, setCategoryTags] = useState([]);
   const [rarityTags, setRarityTags] = useState([]);
   const [showResult, setShowResult] = useState(false); //true -> show, false -> hide
-  
+
   const navigate = useNavigate();
 
   const cardFilteredData = () => {
     const params = {
       ...(keyword && { name: keyword }),
       ...(id && { code: id }),
-      product: productId,
+      product: productCode,
       color: colorTags,
       category: categoryTags,
       rarity: rarityTags,
@@ -110,7 +110,7 @@ function CardSearch(props) {
   };
 
   const onChangeProduct = (event) => {
-    setProductId(event.target.value);
+    setproductCode(event.target.value);
   };
 
   const onChangeName = (event) => {
