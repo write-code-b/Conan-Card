@@ -71,7 +71,7 @@ function Card(props) {
               <div className="category">{props.category}</div>
               <div className="level">{props.level}</div>
             </div>
-            <div className={`name ${props.name.length >= 9 ? "long" : ""}`}>
+            <div className={`name ${props.name.length >= 10 ? "long" : ""}`}>
               {props.name}
             </div>
           </div>
