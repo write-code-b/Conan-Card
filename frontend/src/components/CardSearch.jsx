@@ -2,34 +2,31 @@ import { useState, useRef, useEffect } from "react";
 import { createSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Badge from "./Badge";
+import ProductList from "./ProductList";
+import {
+  PRODUCT_LIST,
+  COLOR_LIST,
+  CATEGORY_LIST,
+  RARITY_LIST,
+} from "../data/CardData";
 
 function CardSearch(props) {
   const [searchTags, setSearchTags] = useState([]);
   const [keyword, setKeyword] = useState("");
   const [id, setId] = useState("");
+  const [productId, setProductId] = useState("");
   const [colorTags, setColorTags] = useState([]);
   const [categoryTags, setCategoryTags] = useState([]);
   const [rarityTags, setRarityTags] = useState([]);
   const [showResult, setShowResult] = useState(false); //true -> show, false -> hide
-
-  const color = { 0: "적", 1: "황", 2: "녹", 3: "청", 4: "백", 5: "흑" };
-  const category = { 6: "사건", 7: "이벤트", 8: "캐릭터", 9: "파트너" };
-  const rarity = {
-    10: "C",
-    11: "CP",
-    12: "R",
-    13: "RP",
-    14: "SRP",
-    15: "D",
-    16: "PR",
-  };
-
+  
   const navigate = useNavigate();
 
   const cardFilteredData = () => {
     const params = {
       ...(keyword && { name: keyword }),
       ...(id && { code: id }),
+      product: productId,
       color: colorTags,
       category: categoryTags,
       rarity: rarityTags,
@@ -56,10 +53,13 @@ function CardSearch(props) {
       });
   };
 
-  const colorList = Object.entries(color).map(([key, value]) => (
+  const productList = PRODUCT_LIST.map((product) => (
+    <ProductList id={product.id} name={product.name} />
+  ));
+  const colorList = COLOR_LIST.map((color) => (
     <Badge
-      key={key}
-      value={value}
+      key={color.id}
+      value={color.name}
       colorTags={colorTags}
       setColorTags={setColorTags}
       setShowResult={setShowResult}
@@ -67,10 +67,10 @@ function CardSearch(props) {
       event={true}
     />
   ));
-  const categoryList = Object.entries(category).map(([key, value]) => (
+  const categoryList = CATEGORY_LIST.map((category) => (
     <Badge
-      key={key}
-      value={value}
+      key={category.id}
+      value={category.name}
       categoryTags={categoryTags}
       setCategoryTags={setCategoryTags}
       setShowResult={setShowResult}
@@ -78,10 +78,10 @@ function CardSearch(props) {
       event={true}
     />
   ));
-  const rarityList = Object.entries(rarity).map(([key, value]) => (
+  const rarityList = RARITY_LIST.map((rarity) => (
     <Badge
-      key={key}
-      value={value}
+      key={rarity.id}
+      value={rarity.name}
       rarityTags={rarityTags}
       setRarityTags={setRarityTags}
       setShowResult={setShowResult}
@@ -107,6 +107,10 @@ function CardSearch(props) {
   const clickSearchBtn = () => {
     showTags();
     cardFilteredData();
+  };
+
+  const onChangeProduct = (event) => {
+    setProductId(event.target.value);
   };
 
   const onChangeName = (event) => {
@@ -138,10 +142,8 @@ function CardSearch(props) {
             <div>
               <form action="#">
                 <label htmlFor=""></label>
-                <select name="" id="">
-                  <option value="product1">
-                    CT-P01 Case-Booster 01 탐정들의 조커
-                  </option>
+                <select name="" id="" onChange={onChangeProduct}>
+                  {productList}
                 </select>
               </form>
             </div>
