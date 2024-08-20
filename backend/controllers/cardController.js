@@ -15,6 +15,7 @@ exports.card_list = asyncHandler(async (req, res, next) => {
       return {
         ...(k.name && { name: { $regex: regex(k.name) } }),
         ...(k.code && { code: { $in: k.code } }),
+        ...(k.product !== "0" && { product_code: parseInt(k.product) }),
         ...(k.color && { color: { $in: k.color } }),
         ...(k.category && { category: { $in: k.category } }),
         ...(k.rarity && { rarity: { $in: k.rarity } }),
