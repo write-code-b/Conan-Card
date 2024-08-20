@@ -15,6 +15,7 @@ function CardSearch(props) {
   const [keyword, setKeyword] = useState("");
   const [id, setId] = useState("");
   const [productCode, setproductCode] = useState(0);
+  const [productName, setproductName] = useState("전체선택");
   const [colorTags, setColorTags] = useState([]);
   const [categoryTags, setCategoryTags] = useState([]);
   const [rarityTags, setRarityTags] = useState([]);
@@ -100,7 +101,14 @@ function CardSearch(props) {
   }
 
   function showTags() {
-    setSearchTags([id, keyword, ...colorTags, ...rarityTags, ...categoryTags]);
+    setSearchTags([
+      id,
+      keyword,
+      productName,
+      ...colorTags,
+      ...rarityTags,
+      ...categoryTags,
+    ]);
     setShowResult(true);
   }
 
@@ -111,6 +119,11 @@ function CardSearch(props) {
 
   const onChangeProduct = (event) => {
     setproductCode(event.target.value);
+    PRODUCT_LIST.map((product) => {
+      if (product.id === parseInt(event.target.value)) {
+        setproductName(product.name);
+      }
+    });
   };
 
   const onChangeName = (event) => {
