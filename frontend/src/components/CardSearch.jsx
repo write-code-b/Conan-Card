@@ -3,6 +3,7 @@ import { createSearchParams, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Badge from "./Badge";
 import ProductList from "./ProductList";
+import CardSearchResult from "./CardSearchResult";
 import {
   PRODUCT_LIST,
   COLOR_LIST,
@@ -20,6 +21,7 @@ function CardSearch(props) {
   const [categoryTags, setCategoryTags] = useState([]);
   const [rarityTags, setRarityTags] = useState([]);
   const [showResult, setShowResult] = useState(false); //true -> show, false -> hide
+  const [sortOption, setSortOption] = useState("");
 
   const navigate = useNavigate();
 
@@ -27,6 +29,7 @@ function CardSearch(props) {
     const params = {
       ...(keyword && { name: keyword }),
       ...(id && { code: id }),
+      ...(sortOption && { sort: sortOption }),
       product: productCode,
       color: colorTags,
       category: categoryTags,
@@ -96,11 +99,7 @@ function CardSearch(props) {
       return <Badge key={`search_ + ${idx}`} value={badge} event={false} />;
   });
 
-  function onChangeCheckbox() {
-    props.flipAllCard();
-  }
-
-  function showTags() {
+  const showTags = () => {
     setSearchTags([
       id,
       keyword,
@@ -110,7 +109,7 @@ function CardSearch(props) {
       ...categoryTags,
     ]);
     setShowResult(true);
-  }
+  };
 
   const clickSearchBtn = () => {
     showTags();
@@ -177,19 +176,15 @@ function CardSearch(props) {
         <button id="searchBtn" onClick={clickSearchBtn}>
           검색
         </button>
-        <div className="result">
-          <div>
-            <div className="count">{props.count}개</div>
-            <div className="tags">{showResult && tagSearchList}</div>
-          </div>
-          <div className="flip">
-            <input
-              type="checkbox"
-              onChange={({ target: { checked } }) => onChangeCheckbox(checked)}
-            />
-            카드 뒤집기
-          </div>
-        </div>
+        <CardSearchResult
+          count={props.count}
+          showResult={showResult}
+          tagSearchList={tagSearchList}
+          flipAllCard={props.flipAllCard}
+          sortOption={sortOption}
+          setSortOption={setSortOption}
+          cardFilteredData={cardFilteredData}
+        />
       </section>
     </>
   );

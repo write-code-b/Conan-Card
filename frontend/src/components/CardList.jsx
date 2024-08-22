@@ -27,6 +27,7 @@ function CardList(props) {
       code={card.code}
       name={card.name}
       level={card.level}
+      level_raw={card.level_raw}
       product={card.product}
       color={card.color}
       category={card.category}
@@ -40,9 +41,9 @@ function CardList(props) {
     />
   ));
 
-  function flipAllCard() {
+  const flipAllCard = () => {
     return flipAll ? setFlipAll(false) : setFlipAll(true);
-  }
+  };
 
   useEffect(() => {
     cardData();

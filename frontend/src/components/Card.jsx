@@ -11,10 +11,11 @@ function Card(props) {
     <Badge key={`card_ + ${idx}`} value={badge} />
   ));
 
-  function flipCard() {
+  const flipCard = () => {
     return flip ? setFlip(false) : setFlip(true);
-  }
-  function translateColor(color) {
+  };
+  
+  const translateColor = (color) => {
     let en = "";
     switch (color) {
       case "적":
@@ -37,7 +38,7 @@ function Card(props) {
         break;
     }
     return en;
-  }
+  };
 
   useEffect(() => {
     if (props.flipAll) {
@@ -69,7 +70,9 @@ function Card(props) {
           <div className="title">
             <div className="right">
               <div className="category">{props.category}</div>
-              <div className="level">{props.level}</div>
+              <div className="level">
+                {props.level === "-1" ? props.level_raw : props.level}
+              </div>
             </div>
             <div className={`name ${props.name.length >= 10 ? "long" : ""}`}>
               {props.name}
