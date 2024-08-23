@@ -7,7 +7,7 @@ function About() {
           있다면&nbsp;
           <a
             target="_blank"
-            href="https://minjichoiofficial.notion.site/Conan-TCG-DECK-3417b0a9e96542858557171e28c2c277?pvs=4"
+            href="https://crystal-quince-dc4.notion.site/Conan-TCG-DECK-fb1ca0b8f57f43a5ad679c861b05decd?pvs=4"
           >
             수정 요청 페이지(link)
           </a>
