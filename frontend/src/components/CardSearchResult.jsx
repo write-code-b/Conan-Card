@@ -16,27 +16,24 @@ function CardSearchResult(props) {
 
   return (
     <div className="result">
-      <div>
-        <div className="count">{props.count}개</div>
-        <div className="tags">{props.showResult && props.tagSearchList}</div>
-      </div>
+      <div className="tags">{props.showResult && props.tagSearchList}</div>
       <div className="option">
-        <form action="#">
-          <label htmlFor=""></label>
-          <select
-            defaultValue="default"
-            onChange={onChangeOption}
-          >
-            <option value="default">정렬</option>
-            <option value="level_high">레벨 높은순</option>
-          </select>
-        </form>
-        <div className="flip">
-          <input
-            type="checkbox"
-            onChange={({ target: { checked } }) => onChangeCheckbox(checked)}
-          />
-          카드 뒤집기
+        <div className="count">{props.count}개</div>
+        <div>
+          <form action="#">
+            <label htmlFor=""></label>
+            <select defaultValue="default" onChange={onChangeOption}>
+              <option value="default">정렬</option>
+              <option value="level_high">레벨 높은순</option>
+            </select>
+          </form>
+          <div className="flip">
+            <input
+              type="checkbox"
+              onChange={({ target: { checked } }) => onChangeCheckbox(checked)}
+            />
+            카드 뒤집기
+          </div>
         </div>
       </div>
     </div>

@@ -300,18 +300,11 @@ nav .nav_active {
 }
 #cardSearch .result {
   display: flex;
-  align-items: center;
+  gap: 1.875rem;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
   width: 90%;
-}
-#cardSearch .result > div:nth-child(1) {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-#cardSearch .result .count {
-  min-width: 3.125rem;
 }
 #cardSearch .result .tags {
   display: flex;
@@ -324,7 +317,7 @@ nav .nav_active {
   gap: 10px;
   align-items: center;
   justify-content: center;
-  height: 1.188rem;
+  // height: 1.188rem;
   border: solid 0.5px #090707;
   background-color: #e0e3da;
   font-size: 0.938rem;
@@ -339,8 +332,17 @@ nav .nav_active {
 }
 #cardSearch .option {
   display: flex;
+  align-self: flex-end;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  width: 100%;
+}
+#cardSearch .option > div:nth-child(2) {
+  display: flex;
+}
+#cardSearch .result .count {
+  min-width: 3.125rem;
+  font-size: 1.25rem;
 }
 #cardSearch .result select {
   width: 6.875rem;
