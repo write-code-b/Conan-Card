@@ -1,6 +1,7 @@
 @use "sass:list";
+$SBAggroB: "SBAggroB";
+$NanumSquareRound: "NanumSquareRound";
 $colors: #e53a40, #efdc05, #5cab7d, #30a9de, #ffffff, #222222;
-
 // Reset CSS
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -134,15 +135,21 @@ table {
 
 // Font
 @font-face {
-  font-family: "SBAggroB";
+  font-family: $SBAggroB;
   src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
     format("woff");
   font-weight: normal;
   font-style: normal;
 }
-
+@font-face {
+  font-family: $NanumSquareRound;
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 body {
-  font-family: "SBAggroB";
+  font-family: $SBAggroB;
 }
 
 .App {
@@ -188,6 +195,7 @@ nav .nav_active {
   align-items: center;
   justify-content: center;
   margin-bottom: 12.5rem;
+  font-family: $NanumSquareRound;
 }
 #about > div {
   width: 31.25rem;
@@ -212,14 +220,15 @@ nav .nav_active {
 .table {
   display: flex;
   flex-direction: column;
-  gap: 1.875rem;
+  gap: 1.563rem;
   align-items: center;
   justify-content: center;
+  font-family: $NanumSquareRound;
   font-size: 1.25rem;
 }
 .table .row {
   display: flex;
-  column-gap: 2.5rem;
+  column-gap: 1.875rem;
   row-gap: 0.5rem;
   flex-wrap: wrap;
   align-items: center;
@@ -228,24 +237,25 @@ nav .nav_active {
 }
 .table .row > div:nth-child(1) {
   width: 5rem;
+  font-weight: bold;
 }
 .table .row > div:nth-child(2) {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
+  gap: 0.938rem;
   align-items: center;
   justify-content: center;
-  width: 27rem;
+  width: 21.875rem;
 }
 #cardSearch .row input {
   width: 12.5rem;
   height: 1.875rem;
-  font-family: "SBAggroB";
+  font-family: $NanumSquareRound;
 }
 #cardSearch select {
   width: 20rem;
   height: 1.875rem;
-  font-family: "SBAggroB";
+  font-family: $NanumSquareRound;
   font-size: 0.938rem;
   text-overflow: ellipsis;
 }
@@ -254,6 +264,7 @@ nav .nav_active {
   border: solid 2px #566270;
   border-radius: 5px;
   font-size: 1.25rem;
+  font-weight: bold;
   cursor: pointer;
 }
 #cardSearch .badge.clicked {
@@ -284,7 +295,7 @@ nav .nav_active {
   border: none;
   border-radius: 25px;
   background-color: #e53a40;
-  font-family: "SBAggroB";
+  font-family: $SBAggroB;
   color: #ffffff;
   font-size: 1.875rem;
   letter-spacing: 6px;
@@ -305,6 +316,7 @@ nav .nav_active {
   align-items: flex-start;
   justify-content: space-between;
   width: 90%;
+  font-family: $NanumSquareRound;
 }
 #cardSearch .result .tags {
   display: flex;
@@ -342,6 +354,7 @@ nav .nav_active {
 }
 #cardSearch .result .count {
   min-width: 3.125rem;
+  font-family: $SBAggroB;
   font-size: 1.25rem;
 }
 #cardSearch .result select {
