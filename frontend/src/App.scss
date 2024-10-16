@@ -198,7 +198,6 @@ nav .nav_active {
   font-family: $NanumSquareRound;
 }
 #about > div {
-  width: 31.25rem;
   height: 15rem;
   padding: 1.25rem;
   line-height: 20px;
@@ -355,7 +354,7 @@ nav .nav_active {
 #cardSearch .result .count {
   min-width: 3.125rem;
   font-family: $SBAggroB;
-  font-size: 1.25rem;
+  font-size: 1rem;
 }
 #cardSearch .result select {
   width: 6.875rem;
@@ -583,6 +582,7 @@ nav .nav_active {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  font-family: $NanumSquareRound;
   font-size: 0.813rem;
   text-align: center;
   color: #252c41;
