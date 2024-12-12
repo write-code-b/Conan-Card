@@ -1,4 +1,4 @@
-import {useState } from "react";
+import { useState } from "react";
 
 function Badge(props) {
   const [click, setClick] = useState(false);

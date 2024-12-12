@@ -1,9 +1,9 @@
 import { useState, useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
-import Navbar from "./components/Navbar";
-import About from "./components/About";
-import CardList from "./components/CardList";
-import Footer from "./components/Footer";
+import Navbar from "./components/Layout/Navbar";
+import CardList from "./components/ShowCard/CardList";
+import Footer from "./components/Layout/Footer";
+import About from "./pages/About";
 import "./App.scss";
 
 function App() {

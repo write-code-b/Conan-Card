@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import ProgressiveImg from "./ProgressiveImg";
-import placeholderSrc from "../assets/card.png";
+import placeholderSrc from "./assets/card.png";
 import CardBack from "./CardBack";
-import { CardWrapper } from "./Card.styled";
+import { CardWrapper } from "./styles/Card.styled";
 
 function Card(props) {
   const [flip, setFlip] = useState(true); //true -> front, flase -> back

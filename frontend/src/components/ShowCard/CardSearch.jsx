@@ -9,7 +9,7 @@ import {
   COLOR_LIST,
   CATEGORY_LIST,
   RARITY_LIST,
-} from "../data/CardData";
+} from "../../data/CardData";
 
 function CardSearch(props) {
   const [searchTags, setSearchTags] = useState([]);
