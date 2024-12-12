@@ -159,6 +159,27 @@ body {
   //padding: 1.25rem;
 }
 
+// Header
+header,
+nav ul {
+  display: flex;
+  align-items: flex-start;
+}
+.nav_wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.top_nav {
+  display: flex;
+  justify-content: space-between;
+}
+.main_nav {
+  display: flex;
+  width: 100%;
+  margin: 1.25rem;
+}
+
 // Navbar
 nav {
   display: flex;
@@ -186,6 +207,46 @@ nav a:hover {
 }
 nav .nav_active {
   border-top: solid 4px #e53a40;
+}
+
+//Dropdown Menu
+.dropdown_menu {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+.top_nav {
+  display: flex;
+  justify-content: flex-end;
+}
+.dropdown_toggle {
+  width: 30px;
+  height: 30px;
+  margin: 20px;
+  border: none;
+  cursor: pointer;
+  background: url("../public/images/menu.png") center / contain no-repeat;
+}
+.dropdown_list {
+  display: none;
+  position: absolute;
+  z-index: 1;
+  padding: 0;
+  margin: 0;
+}
+.dropdown_list a {
+  text-decoration-line: none;
+  padding-top: 5px;
+  color: #222222;
+  text-align: center;
+}
+.dropdown_list li {
+  padding: 10px;
+}
+.dropdown_menu.open .dropdown_list {
+  display: block;
 }
 
 //About {
@@ -599,4 +660,37 @@ nav .nav_active {
   align-items: center;
   justify-content: center;
   padding: 1.875rem;
+}
+
+//Media Query
+@media (max-width: 768px) {
+  .nav_wrapper {
+    flex-direction: column;
+    box-shadow: 0 4px 4px -5px #333;
+    background-color: #ffffff;
+    z-index: 1;
+  }
+
+  .main_nav {
+    display: none;
+  }
+
+  .dropdown_menu {
+    display: block;
+  }
+
+  .dropdown_list {
+    position: static;
+  }
+
+  #cardSearch {
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  .dropdown_menu {
+    display: none;
+    flex-direction: row;
+  }
 }
