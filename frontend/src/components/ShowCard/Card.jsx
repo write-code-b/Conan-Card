@@ -30,7 +30,7 @@ function Card(props) {
         flip={flip}
       />
       <CardWrapper
-        color={props.color.split(",")}
+        color={props.color.split(",").map((col) => col.trim())}
         className={`cardBack ${flip ? "" : "on"}`}
       >
         <CardBack
