@@ -1,11 +1,13 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import * as iDBUtil from "../../utils/indexedDBUtil";
 import Card from "./Card";
 import CardSearch from "./CardSearch";
 
-function CardList(props) {
+function CardList() {
   const [data, setData] = useState([]);
   const [flipAll, setFlipAll] = useState(false); //true -> front, flase -> back
+  const [favoritesList, setFavoritesList] = useState([]);
 
   const cardData = () => {
     axios({
@@ -24,6 +26,7 @@ function CardList(props) {
   const cards = data.map((card) => (
     <Card
       key={card._id}
+      id={card._id}
       code={card.code}
       name={card.name}
       level={card.level}
@@ -38,6 +41,8 @@ function CardList(props) {
       effect={card.effect}
       image_url={card.image_url}
       flipAll={flipAll}
+      favoritesList={favoritesList}
+      setFavoritesList={setFavoritesList}
     />
   ));
 
@@ -45,8 +50,18 @@ function CardList(props) {
     return flipAll ? setFlipAll(false) : setFlipAll(true);
   };
 
+  const getAllDataFromIndexedDB = async (store) => {
+    let data = await iDBUtil.getAllDataFromIndexedDB(store);
+    const favorites = data.map((favorites) => {
+      return favorites.id;
+    });
+    setFavoritesList(favorites);
+  };
+
   useEffect(() => {
+    const store = "favorites";
     cardData();
+    getAllDataFromIndexedDB(store);
   }, []);
 
   return (

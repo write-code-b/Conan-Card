@@ -29,6 +29,7 @@ abbr,
 acronym,
 address,
 big,
+button,
 cite,
 code,
 del,
@@ -441,9 +442,38 @@ nav .nav_active {
   padding-top: 1.875rem;
 }
 .card {
+  position: relative;
   width: 15.625rem;
   height: 21.813rem;
   cursor: pointer;
+}
+#cardList .card:hover .favorites {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  width: 40px;
+  height: 36px;
+  border-radius: 50%;
+  border: solid 0.5px;
+  background-color: #e0e3da;
+  z-index: 1;
+  cursor: pointer;
+}
+#cardList .card:hover .favorites:after {
+  content: "";
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: url("../public/images/heart_off.png") center / contain no-repeat;
+  z-index: 1;
+}
+#cardList .card:hover .favorites.on:after {
+  background: url("../public/images/heart_on.png") center / contain no-repeat;
 }
 .card:hover {
   transform: scale(1.05);
@@ -452,7 +482,7 @@ nav .nav_active {
   width: 21.813rem;
   height: 15.625rem;
 }
-.card .on {
+.cardBack.on {
   z-index: 1;
 }
 .cardFront,
