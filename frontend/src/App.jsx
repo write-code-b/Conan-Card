@@ -1,10 +1,12 @@
-import { useState, useEffect } from "react";
+import { useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
 import Header from "./components/Layout/Header";
 import CardList from "./components/ShowCard/CardList";
 import Footer from "./components/Layout/Footer";
 import About from "./pages/About";
+import { ToastContainer } from "react-toastify";
 import "./App.scss";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   const idb =
@@ -22,7 +24,7 @@ function App() {
       return;
     }
 
-    const request = idb.open("conan", 4);
+    const request = idb.open("conan");
 
     request.onerror = (e) => {
       console.log("error", e);
@@ -52,6 +54,7 @@ function App() {
         <Route path="*" element={<Navigate to="/cards" />} />
       </Routes>
       <Footer />
+      <ToastContainer />
     </div>
   );
 }
