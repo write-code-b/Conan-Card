@@ -3,7 +3,7 @@ const DB_NAME = "conan";
 //Open DB
 function openIndexedDB(store) {
   return new Promise((resolve, reject) => {
-    const request = window.indexedDB.open(DB_NAME, 4);
+    const request = window.indexedDB.open(DB_NAME);
 
     request.onerror = (e) => {
       reject("IndexedDB 접근 오류", e);

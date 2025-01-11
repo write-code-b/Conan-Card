@@ -4,6 +4,7 @@ import ProgressiveImg from "./ProgressiveImg";
 import placeholderSrc from "./assets/card.png";
 import CardBack from "./CardBack";
 import { CardWrapper } from "./styles/Card.styled";
+import { toast } from "react-toastify";
 
 function Card(props) {
   const [flip, setFlip] = useState(true); //true -> front, flase -> back
@@ -15,20 +16,9 @@ function Card(props) {
     return flip ? setFlip(false) : setFlip(true);
   };
 
-  const removeFavorites = (favoritesToRemove) => {
-    const favoritesList = props.favoritesList;
-    props.setFavoritesList(
-      favoritesList.filter(
-        (favoritesList) => favoritesList !== favoritesToRemove,
-      ),
-    );
-  };
   const clickFavorites = (e) => {
     const store = "favorites";
-    const favoritesList = props.favoritesList;
     const cardId = props.id;
-    e.stopPropagation();
-
     const addDataToIndexedDB = async () => {
       let data = { id: cardId };
       let result = await iDBUtil.addDataToIndexedDB(store, data);
@@ -37,14 +27,13 @@ function Card(props) {
       let result = await iDBUtil.deleteDataToIndexedDB(store, cardId);
     };
 
+    e.stopPropagation();
     if (favorites) {
-      removeFavorites(cardId);
       deleteDataFromIndexedDB();
-      setFavorites(false);
     } else {
-      props.setFavoritesList([...favoritesList, cardId]);
-      addDataToIndexedDB();
-      setFavorites(true);
+      const maxLength = 30;
+      if (props.favoritesList.length + 1 <= maxLength) addDataToIndexedDB();
+      else toast.error("즐겨찾기는 30개까지 가능합니다!");
     }
   };
 
@@ -55,6 +44,10 @@ function Card(props) {
       setFlip(true);
     }
   }, [props.flipAll]);
+
+  useEffect(() => {
+    setFavorites(props.favoritesList.includes(props.id));
+  }, [props.favoritesList]);
 
   return (
     <div

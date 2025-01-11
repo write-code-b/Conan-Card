@@ -2,6 +2,7 @@
 $SBAggroB: "SBAggroB";
 $NanumSquareRound: "NanumSquareRound";
 $colors: #e53a40, #efdc05, #5cab7d, #30a9de, #ffffff, #222222;
+$red: #e53a40;
 // Reset CSS
 /* http://meyerweb.com/eric/tools/css/reset/
    v2.0 | 20110126
@@ -189,6 +190,7 @@ nav {
   justify-content: center;
   font-size: 1.25rem;
   font-weight: 500;
+  font-family: $SBAggroB;
 }
 nav li {
   display: flex;
@@ -207,7 +209,7 @@ nav a:hover {
   transform: scale(1.1);
 }
 nav .nav_active {
-  border-top: solid 4px #e53a40;
+  border-top: solid 4px $red;
 }
 
 //Dropdown Menu
@@ -266,7 +268,7 @@ nav .nav_active {
 }
 #about a {
   text-decoration: none;
-  color: #e53a40;
+  color: $red;
 }
 
 //CardSearch {
@@ -355,7 +357,7 @@ nav .nav_active {
   padding: 0.625rem 2.5rem 0.625rem 2.5rem;
   border: none;
   border-radius: 25px;
-  background-color: #e53a40;
+  background-color: $red;
   font-family: $SBAggroB;
   color: #ffffff;
   font-size: 1.875rem;
@@ -446,8 +448,9 @@ nav .nav_active {
   width: 15.625rem;
   height: 21.813rem;
   cursor: pointer;
+  font-family: $SBAggroB;
 }
-#cardList .card:hover .favorites {
+.pc .card:hover .favorites {
   content: "";
   display: flex;
   align-items: center;
@@ -455,32 +458,57 @@ nav .nav_active {
   position: absolute;
   top: 10px;
   right: 5px;
-  width: 40px;
-  height: 36px;
-  border-radius: 50%;
-  border: solid 0.5px;
-  background-color: #e0e3da;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
   z-index: 1;
   cursor: pointer;
 }
-#cardList .card:hover .favorites:after {
+.pc .card:hover .favorites:after {
+  content: "";
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: url("../public/images/star_off.png") center / contain no-repeat;
+  z-index: 1;
+}
+.pc .card:hover .favorites.on:after {
+  background: url("../public/images/star_on.png") center / contain no-repeat;
+}
+.pc .card:hover {
+  transform: scale(1);
+}
+.mobile .favorites {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgb(86, 98, 112, 0.5);
+  z-index: 1;
+  cursor: pointer;
+}
+.mobile .favorites:after {
   content: "";
   display: block;
   position: relative;
   width: 30px;
   height: 30px;
-  background: url("../public/images/heart_off.png") center / contain no-repeat;
+  background: url("../public/images/star_off.png") center / contain no-repeat;
   z-index: 1;
 }
-#cardList .card:hover .favorites.on:after {
-  background: url("../public/images/heart_on.png") center / contain no-repeat;
-}
-.card:hover {
-  transform: scale(1.05);
+.mobile .favorites.on:after {
+  background: url("../public/images/star_on.png") center / contain no-repeat;
 }
 .card.horizontal {
   width: 21.813rem;
-  height: 15.625rem;
+  height: 15.7rem;
 }
 .cardBack.on {
   z-index: 1;
@@ -492,8 +520,9 @@ nav .nav_active {
 }
 .cardFront {
   position: relative;
-  width: 15.625rem;
-  height: 21.813rem;
+  top: 3px;
+  width: 15.7rem;
+  height: 21.9rem;
 }
 .card.horizontal .cardFront {
   width: 21.813rem;
@@ -512,7 +541,7 @@ nav .nav_active {
   flex-direction: column;
   justify-content: space-between;
   position: relative;
-  top: -354px;
+  top: -355px;
   width: 15.625rem;
   height: 21.813rem;
   z-index: -1;
@@ -534,7 +563,7 @@ nav .nav_active {
   opacity: 0.8;
 }
 .cardBack.red::after {
-  border-color: #e53a40;
+  border-color: $red;
 }
 .cardBack.yellow::after {
   border-color: #efdc05;
@@ -665,6 +694,43 @@ nav .nav_active {
   background: url("../public/images/LP.svg") center / contain no-repeat;
   width: 0.75rem;
   height: 1.438rem;
+}
+
+//drawer
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+#drawerCardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 20px;
+}
+#drawerOpenButton {
+  animation: fadein 0.2s;
+}
+#drawerOpenButton::after {
+  content: "";
+  width: 35px;
+  height: 35px;
+  background: url("../public/images/card_case.png") center / contain no-repeat;
+}
+#drawerOpenButton.hidden {
+  animation: fadeout 0.5s forwards;
 }
 
 // Footer
