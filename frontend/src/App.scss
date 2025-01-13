@@ -181,6 +181,9 @@ nav ul {
   width: 100%;
   margin: 1.25rem;
 }
+.main_nav.mobile {
+  display: none;
+}
 
 // Navbar
 nav {
@@ -212,44 +215,25 @@ nav .nav_active {
   border-top: solid 4px $red;
 }
 
-//Dropdown Menu
-.dropdown_menu {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  display: inline-block;
+//drawerNavbar
+#drawerNavbar {
+  justify-content: flex-end;
   width: 100%;
 }
-.top_nav {
+#drawerNavbar.mobile {
   display: flex;
-  justify-content: flex-end;
 }
-.dropdown_toggle {
-  width: 30px;
-  height: 30px;
-  margin: 20px;
-  border: none;
-  cursor: pointer;
-  background: url("../public/images/menu.png") center / contain no-repeat;
+#menuDrawer span {
+  font-family: $NanumSquareRound !important;
 }
-.dropdown_list {
+#menuDrawer > div:nth-child(3) {
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+#drawerNavbar.pc {
   display: none;
-  position: absolute;
-  z-index: 1;
-  padding: 0;
-  margin: 0;
-}
-.dropdown_list a {
-  text-decoration-line: none;
-  padding-top: 5px;
-  color: #222222;
-  text-align: center;
-}
-.dropdown_list li {
-  padding: 10px;
-}
-.dropdown_menu.open .dropdown_list {
-  display: block;
+  flex-direction: row;
 }
 
 //About {
@@ -760,24 +744,13 @@ nav .nav_active {
 
 //Media Query
 @media (max-width: 768px) {
-  .nav_wrapper {
-    flex-direction: column;
-    box-shadow: 0 4px 4px -5px #333;
-    background-color: #ffffff;
-    z-index: 1;
-  }
+  // #drawerNavbar {
+  //   display: flex;
+  // }
 
-  .main_nav {
-    display: none;
-  }
-
-  .dropdown_menu {
-    display: block;
-  }
-
-  .dropdown_list {
-    position: static;
-  }
+  // .dropdown_list {
+  //   position: static;
+  // }
 
   #cardSearch {
     padding-top: 0;
@@ -785,8 +758,8 @@ nav .nav_active {
 }
 
 @media (min-width: 769px) {
-  .dropdown_menu {
-    display: none;
-    flex-direction: row;
-  }
+  // #drawerNavbar {
+  //   display: none;
+  //   flex-direction: row;
+  // }
 }

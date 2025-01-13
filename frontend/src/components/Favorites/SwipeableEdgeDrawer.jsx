@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useEffect } from "react";
 import { useIsMobile } from "../state/hooks/useIsMobile";
 import { useScroll } from "../state/hooks/useScroll";
 import { Global } from "@emotion/react";
