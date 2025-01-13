@@ -1,9 +1,9 @@
 import { NavLink } from "react-router-dom";
 
-function MainNavbar() {
+function MainNavbar(props) {
   return (
     <>
-      <nav class="main_nav">
+      <nav className={`main_nav ${props.isMobile ? "mobile" : "pc"}`}>
         <NavLink
           className={({ isActive }) => "nav" + (isActive ? "_active" : "")}
           to="/about"
