@@ -1,0 +1,50 @@
+@use "../abstracts/variable" as *;
+
+nav {
+  display: flex;
+  gap: 6.25rem;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.05rem;
+  font-weight: 500;
+  font-family: $SBAggroB;
+}
+nav li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 5.313rem;
+  list-style-type: none;
+}
+nav a {
+  text-decoration-line: none;
+  color: #222222;
+  padding-top: 5px;
+}
+nav a:hover {
+  transform: scale(1.1);
+}
+nav .nav_active {
+  border-top: solid 4px $red;
+}
+
+#drawerNavbar {
+  justify-content: flex-end;
+  width: 100%;
+}
+#drawerNavbar.mobile {
+  display: flex;
+}
+#menuDrawer span {
+  font-family: $NanumSquareRound !important;
+}
+#menuDrawer > div:nth-child(3) {
+  height: 100%;
+  border-top-left-radius: 15px;
+  border-bottom-left-radius: 15px;
+}
+#drawerNavbar.pc {
+  display: none;
+  flex-direction: row;
+}

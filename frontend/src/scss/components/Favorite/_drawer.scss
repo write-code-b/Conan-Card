@@ -1,0 +1,37 @@
+@use "../../abstracts/variable" as *;
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes fadeout {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+#drawerCardList {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  padding-top: 20px;
+}
+#drawerOpenButton {
+  animation: fadein 0.2s;
+}
+#drawerOpenButton::after {
+  content: "";
+  width: 35px;
+  height: 35px;
+  background: url("../../../../public/images/card_case.png") center / contain no-repeat;
+}
+#drawerOpenButton.hidden {
+  animation: fadeout 0.5s forwards;
+}

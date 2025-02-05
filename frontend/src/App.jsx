@@ -5,7 +5,7 @@ import CardList from "./components/ShowCard/CardList";
 import Footer from "./components/Layout/Footer";
 import About from "./pages/About";
 import { ToastContainer } from "react-toastify";
-import "./App.scss";
+import "./scss/main.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {

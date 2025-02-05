@@ -1,0 +1,265 @@
+@use "../../abstracts/variable" as *;
+
+#cardList {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.563rem;
+  padding-top: 1.875rem;
+}
+.card {
+  position: relative;
+  width: 15.625rem;
+  height: 21.813rem;
+  cursor: pointer;
+  font-family: $SBAggroB;
+}
+.pc .card:hover .favorites {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  width: 50px;
+  height: 50px;
+  background-color: transparent;
+  z-index: 1;
+  cursor: pointer;
+}
+.pc .card:hover .favorites:after {
+  content: "";
+  display: block;
+  position: relative;
+  width: 40px;
+  height: 40px;
+  background: url("../../../../public/images/star_off.png") center / contain
+    no-repeat;
+  z-index: 1;
+}
+.pc .card:hover .favorites.on:after {
+  background: url("../../../../public/images/star_on.png") center / contain
+    no-repeat;
+}
+.pc .card:hover {
+  transform: scale(1.05);
+}
+.mobile .favorites {
+  content: "";
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  background-color: rgb(86, 98, 112, 0.5);
+  z-index: 1;
+  cursor: pointer;
+}
+.mobile .favorites:after {
+  content: "";
+  display: block;
+  position: relative;
+  width: 30px;
+  height: 30px;
+  background: url("../../../../public/images/star_off.png") center / contain
+    no-repeat;
+  z-index: 1;
+}
+.mobile .favorites.on:after {
+  background: url("../../../../public/images/star_on.png") center / contain
+    no-repeat;
+}
+.card.horizontal {
+  width: 21.813rem;
+  height: 15.7rem;
+}
+.cardBack.on {
+  z-index: 1;
+}
+.cardFront,
+.cardBack {
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+.cardFront {
+  position: absolute;
+  top: 0px;
+  width: 15.7rem;
+  height: 21.9rem;
+}
+.card.horizontal .cardFront {
+  width: 21.813rem;
+  height: 15.625rem;
+}
+.loading {
+  // filter: blur(1px);
+  clip-path: inset(0);
+}
+.loaded {
+  filter: blur(0px);
+  transition: filter 0.5s linear;
+}
+.cardBack {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: absolute;
+  top: 1px;
+  left: 0.5px;
+  width: 15.625rem;
+  height: 21.813rem;
+  z-index: -1;
+  isolation: isolate;
+}
+.card.horizontal .cardBack {
+  width: 21.813rem;
+  height: 15.625rem;
+}
+.cardBack::after {
+  content: "";
+  position: absolute;
+  border: solid 3px;
+  border-radius: 0.625rem;
+  background: #ffffff;
+  z-index: -1;
+  inset: 0;
+  opacity: 0.8;
+}
+.cardBack.red::after {
+  border-color: $red;
+}
+.cardBack.yellow::after {
+  border-color: #efdc05;
+}
+.cardBack.green::after {
+  border-color: #5cab7d;
+}
+.cardBack.blue::after {
+  border-color: #30a9de;
+}
+.cardBack.black ::after {
+  border-color: #090707;
+}
+.cardBack.white::after {
+  border-color: #ffffff;
+}
+.card .title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  padding-top: 1.25rem;
+  margin-bottom: 0.625rem;
+  font-size: 1.25rem;
+}
+.card .title .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  top: 10px;
+  left: 7px;
+}
+.card .title .name.long {
+  margin-left: 3.75rem;
+  margin-right: 0.313rem;
+  font-size: 0.938rem;
+}
+.card.horizontal .title .name.long {
+  margin-left: 0;
+  font-size: 1.25rem;
+}
+.card.horizontal .right {
+  top: 196px;
+  left: 230px;
+}
+.card.horizontal .right .category {
+  opacity: 0;
+}
+.card .right .category {
+  font-size: 0.75rem;
+  font-weight: 300;
+}
+.card .right .level {
+  color: #ffffff;
+  -webkit-text-stroke: 1px #222222;
+}
+.card .jobs {
+  display: flex;
+  gap: 0.313rem;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 0.625rem;
+}
+.card .jobs .badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  height: 1.125rem;
+  border: solid 1px;
+  border-radius: 0.625rem;
+  padding: 0.188rem 0.625rem 0 0.625rem;
+  background-color: #ffffff;
+  font-size: 0.75rem;
+}
+.card .effect {
+  padding-left: 0.625rem;
+  padding-right: 0.625rem;
+  line-height: 1.125rem;
+  font-size: 0.938rem;
+}
+.cardBack .bottom {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.625rem 0.625rem 0.625rem;
+}
+.cardBack .bottom > div:nth-child(1) {
+  display: flex;
+  gap: 0.313rem;
+}
+.cardBack .bottom .id {
+  align-self: flex-end;
+  font-size: 0.625rem;
+}
+.cardBack .bottom > div:nth-child(2) {
+  display: flex;
+  gap: 0.625rem;
+}
+.bottom .rarity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 1.375rem;
+  padding: 0 0.313rem 0 0.313rem;
+  border: solid 1px;
+  border-radius: 5px;
+  background-color: #ffffff;
+  font-size: 0.938rem;
+}
+.AP,
+.LP {
+  display: flex;
+  gap: 0.313rem;
+  align-items: center;
+  justify-content: center;
+}
+.AP::before {
+  content: "";
+  display: flex;
+  background: url("../../../../public/images/AP.svg") center / contain no-repeat;
+  width: 0.75rem;
+  height: 1.438rem;
+}
+.LP::before {
+  content: "";
+  display: flex;
+  background: url("../../../../public/images/LP.svg") center / contain no-repeat;
+  width: 0.75rem;
+  height: 1.438rem;
+}

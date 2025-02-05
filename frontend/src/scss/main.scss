@@ -1,0 +1,48 @@
+@use "./abstracts/variable" as *;
+//base
+@import "./base/reset";
+
+//layout
+@import "./layout/header";
+@import "./layout/navbar";
+@import "./layout/footer";
+
+//pages
+@import "./pages/about";
+
+//component
+@import "./components/Favorite/drawer";
+@import "./components/ShowCard/cardlist";
+@import "./components/ShowCard/cardsearch";
+
+body {
+  font-family: $SBAggroB;
+}
+
+.App {
+  display: grid;
+  gap: 1.875rem;
+  grid-template-rows: 5rem auto 17.5rem;
+}
+
+//Media Query
+@media (max-width: 768px) {
+  // #drawerNavbar {
+  //   display: flex;
+  // }
+
+  // .dropdown_list {
+  //   position: static;
+  // }
+
+  #cardSearch {
+    padding-top: 0;
+  }
+}
+
+@media (min-width: 769px) {
+  // #drawerNavbar {
+  //   display: none;
+  //   flex-direction: row;
+  // }
+}

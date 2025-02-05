@@ -1,0 +1,22 @@
+$SBAggroB: "SBAggroB";
+$NanumSquareRound: "NanumSquareRound";
+$colors: #e53a40, #efdc05, #5cab7d, #30a9de, #ffffff, #222222;
+$red: #e53a40;
+$light_blue: #d4dfe6;
+$black: #566270;
+$bold_black: #090707;
+
+@font-face {
+  font-family: $SBAggroB;
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: $NanumSquareRound;
+  src: url("https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_two@1.0/NanumSquareRound.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}

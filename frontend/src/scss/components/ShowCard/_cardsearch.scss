@@ -1,0 +1,169 @@
+@use "sass:list";
+@use "../../abstracts/variable" as *;
+@use "../../abstracts/mixins" as *;
+
+#cardSearch,
+#searchBtn {
+  @include flexBox;
+}
+#cardSearch {
+  gap: 1.875rem;
+  flex-direction: column;
+  padding-top: 1.875rem;
+}
+.table,
+.table .row,
+.table .row div {
+  @include flexBox;
+}
+.table {
+  flex-direction: column;
+  gap: 1.563rem;
+  font-family: $NanumSquareRound;
+}
+.table .row {
+  column-gap: 1.875rem;
+  row-gap: 0.5rem;
+  flex-wrap: wrap;
+  text-align: center;
+}
+.table .row > div:nth-child(1) {
+  width: 5rem;
+  font-weight: bold;
+}
+.table .row > div:nth-child(2) {
+  flex-wrap: wrap;
+  gap: 0.938rem;
+  width: 21.875rem;
+}
+#cardSearch .row input {
+  width: 90%;
+  height: 1.875rem;
+  padding: 0.5rem;
+  border: none;
+  border-radius: 20px;
+  background-color: $light_blue;
+  font-family: $NanumSquareRound;
+  text-align: center;
+}
+#cardSearch select {
+  width: 90%;
+  height: 1.875rem;
+  border: solid 0.5px $black;
+  border-radius: 20px;
+  font-family: $NanumSquareRound;
+  text-align: center;
+  text-overflow: ellipsis;
+}
+#cardSearch .badge {
+  @include flexBox;
+  height: 2.188rem;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#cardSearch .category .badge {
+  width: 4.5rem;
+}
+#cardSearch .color .badge,
+#cardSearch .rarity .badge {
+  width: 2.188rem;
+}
+#cardSearch .badge.clicked {
+  border: 2px dashed $bold_black;
+}
+#cardSearch .color .badge {
+  @for $i from 1 through length($colors) {
+    color: #ffffff;
+    &:nth-child(#{$i}) {
+      background-color: nth($colors, $i);
+      @if $i == 2 {
+        color: #222222;
+      } @else if $i == 5 {
+        color: #222222;
+      }
+    }
+  }
+}
+#cardSearch .color > div:nth-child(6).clicked {
+  border-color: #ffffff;
+}
+#cardSearch #searchBtn {
+  gap: 0.625rem;
+  padding: 0.625rem 2.5rem 0.625rem 2.5rem;
+  border: none;
+  border-radius: 25px;
+  background-color: $red;
+  font-family: $SBAggroB;
+  color: #ffffff;
+  font-size: 1.25rem;
+  letter-spacing: 6px;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  cursor: pointer;
+}
+#cardSearch #searchBtn::after {
+  content: "";
+  display: flex;
+  width: 1.563rem;
+  height: 1.563rem;
+  background: url("../../../../public/images/search.png") center / contain
+    no-repeat;
+}
+#cardSearch .result {
+  display: flex;
+  gap: 1.875rem;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 90%;
+  font-family: $NanumSquareRound;
+}
+#cardSearch .result .tags {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 10px;
+  column-gap: 20px;
+}
+#cardSearch .result .badge {
+  @include flexBox;
+  gap: 10px;
+  // height: 1.188rem;
+  border: solid 0.5px #090707;
+  background-color: #e0e3da;
+  font-size: 0.938rem;
+  pointer-events: none;
+}
+#cardSearch .result .badge::before {
+  content: "";
+  width: 0.563rem;
+  height: 0.563rem;
+  background: url("../../../../public/images/close_btn.svg") center / contain
+    no-repeat;
+  // pointer-events: auto;
+}
+#cardSearch .option {
+  display: flex;
+  align-self: flex-end;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+#cardSearch .option > div:nth-child(2) {
+  display: flex;
+}
+#cardSearch .result .count {
+  min-width: 3.125rem;
+  font-family: $SBAggroB;
+  font-size: 1rem;
+}
+#cardSearch .result select {
+  width: 6.875rem;
+}
+#cardSearch .result .flip {
+  @include flexBox;
+  gap: 10px;
+  min-width: 9.375rem;
+}
+#cardSearch .result input {
+  width: 1.563rem;
+  height: 1.563rem;
+}

@@ -1,0 +1,22 @@
+header,
+nav ul {
+  display: flex;
+  align-items: flex-start;
+}
+.nav_wrapper {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+.top_nav {
+  display: flex;
+  justify-content: space-between;
+}
+.main_nav {
+  display: flex;
+  width: 100%;
+  margin: 1.25rem;
+}
+.main_nav.mobile {
+  display: none;
+}
