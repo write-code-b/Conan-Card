@@ -1,4 +1,4 @@
-import { useIsMobile } from "../state/hooks/useIsMobile";
+import { useIsMobile } from "../../state/hooks/useIsMobile";
 import MainNavbar from "./MainNavbar";
 import DrawerNavbar from "./DrawerNavbar";
 

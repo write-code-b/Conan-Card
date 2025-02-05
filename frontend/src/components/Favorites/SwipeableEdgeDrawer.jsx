@@ -1,6 +1,6 @@
 import * as React from "react";
-import { useIsMobile } from "../state/hooks/useIsMobile";
-import { useScroll } from "../state/hooks/useScroll";
+import { useIsMobile } from "../../state/hooks/useIsMobile";
+import { useScroll } from "../../state/hooks/useScroll";
 import { Global } from "@emotion/react";
 import { styled } from "@mui/material/styles";
 import CssBaseline from "@mui/material/CssBaseline";
@@ -109,7 +109,10 @@ export default function SwipeableEdgeDrawer(props) {
         >
           <Puller />
           <Typography sx={{ p: 2, color: "text.secondary" }}>
-            {props.favoritesCard.length} / 30
+            <div id="favortesTitle">
+              <span className="count">{props.favoritesCard.length} / 30</span>
+              <span className="title">즐겨찾기</span>
+            </div>
           </Typography>
         </StyledBox>
         <StyledBox sx={{ px: 2, pb: 2, height: "100%", overflow: "auto" }}>

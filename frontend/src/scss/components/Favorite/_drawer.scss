@@ -1,4 +1,5 @@
 @use "../../abstracts/variable" as *;
+@use "../../abstracts/mixins" as *;
 
 @keyframes fadein {
   from {
@@ -16,10 +17,24 @@
     opacity: 0;
   }
 }
-#drawerCardList {
+#favortesTitle {
   display: flex;
+  justify-content: space-between;
+  font-family: $SBAggroB;
+}
+#favortesTitle .count {
+  font-size: 0.75rem;
+}
+#favortesTitle .title {
+  opacity: 1;
+  font-size: 0.938rem;
+}
+[aria-hidden="true"] #favortesTitle .title {
+  opacity: 0;
+}
+#drawerCardList {
+  @include flexBox;
   flex-wrap: wrap;
-  justify-content: center;
   gap: 30px;
   padding-top: 20px;
 }
@@ -30,7 +45,8 @@
   content: "";
   width: 35px;
   height: 35px;
-  background: url("../../../../public/images/card_case.png") center / contain no-repeat;
+  background: url("../../../../public/images/card_case.png") center / contain
+    no-repeat;
 }
 #drawerOpenButton.hidden {
   animation: fadeout 0.5s forwards;

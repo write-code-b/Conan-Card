@@ -3,9 +3,9 @@ import { useState, useEffect } from "react";
 const ProgressiveImg = ({ placeholderSrc, flip, src, ...props }) => {
   const [imgSrc, setImgSrc] = useState(placeholderSrc || src);
 
-  const flipState = flip && flip ? "on" : "";
+  const flipState = flip && flip ? " on" : "";
   const loadState =
-    placeholderSrc && imgSrc === placeholderSrc ? "loading" : "loaded";
+    placeholderSrc && imgSrc === placeholderSrc ? " loading" : " loaded";
 
   useEffect(() => {
     const img = new Image();
@@ -19,7 +19,7 @@ const ProgressiveImg = ({ placeholderSrc, flip, src, ...props }) => {
     <img
       {...{ src: imgSrc, ...props }}
       alt={props.alt || ""}
-      className={`cardFront ${flipState} ${loadState}`}
+      className={`cardFront${loadState}${flipState}`}
     />
   );
 };

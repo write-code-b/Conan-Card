@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { Route, Routes, Navigate } from "react-router-dom";
+import { useIsMobile } from "./state/hooks/useIsMobile";
 import Header from "./components/Layout/Header";
 import CardList from "./components/ShowCard/CardList";
 import Footer from "./components/Layout/Footer";
@@ -9,6 +10,8 @@ import "./scss/main.scss";
 import "react-toastify/dist/ReactToastify.css";
 
 function App() {
+  const isMobile = useIsMobile();
+
   const idb =
     window.indexedDB ||
     window.mozIndexedDB ||
@@ -46,7 +49,7 @@ function App() {
   };
 
   return (
-    <div className="App">
+    <div className={`App ${isMobile ? "mobile" : "pc"}`}>
       <Header />
       <Routes>
         <Route path="/about" element={<About />} />

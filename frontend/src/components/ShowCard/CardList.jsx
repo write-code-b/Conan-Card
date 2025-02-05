@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import * as iDBUtil from "../../utils/indexedDBUtil";
-import { useIsMobile } from "../state/hooks/useIsMobile";
 import Card from "./Card";
 import CardSearch from "./CardSearch";
 import SwipeableEdgeDrawer from "../Favorites/SwipeableEdgeDrawer";
 
 function CardList() {
-  const isMobile = useIsMobile();
   const [data, setData] = useState([]);
   const [flipAll, setFlipAll] = useState(false); //true -> front, flase -> back
   const [favoritesList, setFavoritesList] = useState([]);
@@ -118,9 +116,7 @@ function CardList() {
         count={data.length}
         flipAllCard={flipAllCard}
       />
-      <section id="cardList" className={isMobile ? "mobile" : "pc"}>
-        {cards}
-      </section>
+      <section id="cardList">{cards}</section>
       <SwipeableEdgeDrawer favoritesCard={favoritesCard} />
     </main>
   );
